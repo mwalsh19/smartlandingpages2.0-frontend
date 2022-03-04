@@ -1,0 +1,425 @@
+  /* fonts */
+@font-face {
+  font-family: 'Conv_Vitesse-Black';
+  src: url('../fonts/Vitesse-Black.eot');
+  src: url('../fonts/Vitesse-Black.woff') format('woff'), url('../fonts/Vitesse-Black.ttf') format('truetype'), url('../fonts/Vitesse-Black.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conv_Vitesse-Bold';
+  src: url('../fonts/Vitesse-Bold.eot');
+  src: url('../fonts/Vitesse-Bold.woff') format('woff'), url('../fonts/Vitesse-Bold.ttf') format('truetype'), url('../fonts/Vitesse-Bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.desktop-only {
+  display: block;
+}
+
+*, ::after, ::before {
+    box-sizing: unset;
+}
+
+.relative {
+  position: relative;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+  padding: 1em;
+}
+
+.col-2 {
+  width: 50%;
+  float: left;
+  max-width: 50%;
+}
+
+.col-3 {
+  width: 32.33%;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-heading-wrap .logo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.systrans-landing-page-1, .systrans-landing-page-2, .systrans-landing-page-3 {
+  display: flex;
+}
+
+.quickform-desktop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  z-index: 5;
+}
+
+.form-control-btn {
+  background: #d71e26;
+}
+
+.top-container-wrap {
+  position: relative;
+}
+
+.landscape-container {
+  min-height: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center right !important;
+}
+
+.landscape-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.btnGroup-mobile {
+  display: none;
+}
+
+.main-description {
+  width: 100%;
+  max-width: 50%;
+  position: absolute;
+  left: 0;
+  z-index: 4;
+  color: #fff;
+  padding-top: 200px;
+}
+
+.main-description .primary-description {
+  margin-bottom: 5px;
+}
+
+.main-description h3 {
+  font-family: Conv_Vitesse-Black;
+  font-size: 44px;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 0;
+  color: #fff;
+  line-height: 1;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.main-description .secondary-description {
+  font-family: Arial;
+  font-size: 18px;
+  max-width: 600px;
+  line-height: 27px;
+  text-align: left;
+}
+
+.apply-form {
+	text-align: left;
+}
+
+.apply-form h2 {
+  text-transform: uppercase;
+  margin-bottom: -7px;
+  font-size: 24px;
+}
+
+.main-description #apply-email-field {
+  float: left;
+  max-width: 403px;
+  padding: 2px 10px;
+  font-family: helvetica;
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 60px;
+}
+
+.middle-container-wrap {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  flex-direction: row-reverse;
+}
+
+.middle-container-wrap .text {
+  width: 100%;
+  overflow: hidden;
+}
+
+.middle-container-wrap .text .middle-copy {
+  padding: 20px;
+  min-height: 800px;
+}
+
+.background-middle {
+	background-size: cover;
+}
+
+.open-road {
+  width: 100%;
+  height: 398px;
+  background-position: center;
+  position: relative;
+  margin-bottom: -36px;
+}
+
+.open-road h3 {
+  position: absolute;
+  color: white;
+  top: 45%;
+  font-size: 36px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-family: Conv_Vitesse-Bold;
+}
+
+.icon-section {
+  margin: auto;
+  background-color: #f2f3f4;
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 1em;
+}
+
+.grid-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.icon-section h2 {
+  font-size: 36px;
+  font-family: Conv_Vitesse-Bold;
+  position: relative;
+  top: 30px;
+  text-align: left;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.icon-section .icons {
+  margin: 2em 0 2em 0;
+}
+
+.icon-section img {
+  width: 55px;
+  height: 55px;
+  padding: 0px 15px 0px 15px;
+  position: relative;
+  top: 0;
+}
+
+.icon-section .section-text {
+  width: 215px;
+}
+
+.icon-section .section-text h3 {
+  text-align: left;
+}
+.icon-section .section-text h3 {
+  font-family: 'helvetica';
+  font-size: 18px;
+  font-weight: bold;
+  color: #212634;
+}
+
+.icon-section .section-text p {
+  text-align: left;
+}
+.icon-section .section-text p {
+  font-family: 'helvetica';
+  font-size: 14px;
+  color: #212634;
+  line-height: 1.5em;
+}
+
+.map-section {
+  background-color: #212634;
+}
+
+.map-section {
+  width: 100%;
+  background-position: center;
+  position: relative;
+  padding-bottom: 2em;
+  margin-top: -30px;
+}
+
+.map-section h2 {
+  font-size: 36px;
+  font-family: Conv_Vitesse-Bold;
+  position: relative;
+  top: 30px;
+  margin-bottom: 1em;
+}
+
+.map-section img {
+  max-width: 100%;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 277px;
+    background-color: #fff !important;
+    margin: 0 auto;
+    margin-top: 2em !important;
+    padding-top: 1em;
+    color: #000;
+}
+
+.footer-container p {
+    font-family: Arial;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #000 !important;
+}
+
+.footer-container ul li a{
+    color: #000;
+}
+
+.footer-container ul span {
+    color: #000 !important;
+}
+
+.footer-container .terms {
+    color: #000 !important;
+}
+
+.footer-wrap .phone-number-footer h4 {
+	color: #000 !important;
+}
+
+
+@media(max-width: 500px) {
+	.sub-heading {
+	    background: rgb(33, 38, 52, 1) !important;
+	    padding: 0 !important;
+	    position: fixed;
+	    z-index: 21;
+	    width: 100%;
+	    top: 0;
+	}
+
+	.btnGroup-mobile {
+	  margin-top: 90px;
+	  text-align: center;
+	}
+
+	.btnGroup-mobile {
+	  display: block;
+	  margin: 0 auto;
+	  margin-top: 0px;
+	  background-color: rgba(33, 38, 52, 0.6);
+	  padding: 10px 5px;
+	  margin-top: 115px;
+	  position: fixed;
+	  top: 0;
+	  z-index: 22;
+	  width: 100%;
+	}
+
+	#callBtn {
+	  margin-right: 10px;
+	}
+
+	.versionB #quickFormBtn {
+		display: none;
+	}
+
+	.main-description {
+		display: none;
+	}
+
+	.landscape-container {
+	    min-height: 300px;
+	}
+
+	.col {
+		padding-right: 0;
+    	padding-left: 0;
+	}
+
+	.col-2 {
+	    width: 100%;
+	    float: none;
+	    max-width: 100%;
+	}
+
+	.row {
+	    display: flex;
+    	flex-direction: column;
+	}
+
+	.second {
+		order: 1;
+	}
+
+	.first {
+		order: 2;
+	}
+
+	.middle-container-wrap .text .middle-copy {
+	    min-height: auto;
+	}
+
+	.background-middle {
+	  padding-bottom: 100%;
+	}
+
+	.open-road h3 {
+	  font-size: 26px;
+	}
+
+	.icon-section {
+	    margin-bottom: 0em;
+	}
+
+	.icon-section h2 {
+	  margin-left: 20px;
+	}
+
+	.col-3 {
+	  width: 100%;
+	  max-width: 100%;
+	  padding-right: 0;
+      padding-left: 0;
+	}
+
+	.icon-section .icons {
+	    margin: .5em 0 .5em 0;
+	}
+
+	.map-section h2 {
+	  margin-left: 10px;
+	}
+
+	.footer-container .footer-wrap {
+	    padding: 10px 0px 0 0px !important;
+	}
+}

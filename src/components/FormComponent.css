@@ -1,0 +1,59 @@
+.leadForm *, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.leadForm {
+	width: 400px;
+	padding: 10px;
+	position: absolute;
+    right: 160px;
+    top: 115px;
+    z-index: 1;
+    text-align: center;
+}
+
+.leadForm h2 {
+	color: white;
+	font-family: Conv_Vitesse-Bold;
+}
+
+.leadForm p {
+	text-align: left;
+}
+
+.leadForm input, .leadForm select {
+	background: rgba(255,255,255,.5);
+}
+
+.form-row {
+	/*padding: 10px 0 15px 0;*/
+}
+
+.formImage {
+	width:70%;
+}
+
+.submit-button {
+	background: none;
+	border: 0;
+}
+
+.submit-button:hover, .submit-button:focus {
+	background: none;
+}
+
+.invalid-feedback {
+	color: white;
+	text-align: left;
+}
+
+
+@media(max-width: 500px) {
+
+	.leadForm {
+	    width: 96%;
+    	position: unset;
+	    text-align: center;
+	    margin-top: 189px;
+	}
+}

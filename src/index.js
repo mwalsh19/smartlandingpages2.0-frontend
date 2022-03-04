@@ -5,11 +5,24 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { 
+	BrowserRouter,
+	Routes,
+  	Route,
+} from "react-router-dom";
+import ThankYou from './layouts/ThankYou';
+import NotFound from './layouts/NotFound';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+    	<BrowserRouter basename="/landing-pages">
+			<Routes>
+	    		<Route path={"/:path"} element={<App />} />
+	      		<Route path="/:path/thank-you" element={<ThankYou />} />
+	      		<Route path="*" element={<NotFound />} />
+	    	</Routes>
+	  	</BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

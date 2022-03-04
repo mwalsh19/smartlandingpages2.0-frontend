@@ -1,5 +1,6 @@
 {
   "name": "smartlandingpages",
+  "homepage": "https://tester.jarrodsampson.com/landing-pages/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,9 +8,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.26.0",
+    "bootstrap": "^4.6.0",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0"
   },
   "scripts": {
@@ -32,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-helmet-async": "^1.2.3"
   }
 }

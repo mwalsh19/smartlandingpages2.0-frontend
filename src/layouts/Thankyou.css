@@ -1,0 +1,281 @@
+.center {
+  text-align: center;
+}
+
+.main-wrap {
+	width: 100%;
+}
+
+.sub-heading {
+	background: rgb(33, 38, 52, 0.8);
+	padding: 7px 0;
+	position: fixed;
+	z-index: 21;
+	width: 100%;
+	top: 0;
+}
+
+.header {
+  background: url(https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/st-thankyou-hero-gfx.jpg) no-repeat bottom;
+    background-size: auto;
+  background-size: cover;
+}
+
+.header .header-wrap {
+  max-width: 980px;
+  padding-top: 10em;
+  padding-bottom: 5em;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.header .checked-icon {
+  background: url(https://systemtrans.com/landing-pages/vendor/thankyou2/images/thankyou-green-check.png) no-repeat;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto;
+}
+
+.header-copy {
+  text-align: center;
+}
+
+.header-copy h1 {
+  font-family: Conv_Vitesse-Black;
+  text-align: center;
+  font-size: 56px;
+  color: #fff;
+  margin: 0;
+}
+
+.header-copy p {
+  font-family: helvetica;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  line-height: 30px;
+  margin: 0;
+  margin-bottom: 0px;
+  margin-bottom: 30px;
+}
+
+#applyNowBtn {
+  background: #d71e26;
+}
+
+.btn {
+  color: white;
+  font-size: 20px;
+  font-family: helvetica;
+  line-height: 2em;
+  text-shadow: none;
+}
+
+.sub-heading-wrap .logo {
+  float: left;
+  width: 236px;
+  height: 85px;
+}
+
+.sub-heading-wrap .sub-heading-phone {
+  float: right;
+}
+
+.sub-heading-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.sub-heading-wrap span {
+  font-family: helvetica;
+  font-size: 18px;
+  color: #fff;
+}
+
+.sub-heading-phone h1 {
+  font-size: 56px;
+  font-family: helvetica;
+  font-weight: bold;
+  color: #d71e26;
+}
+
+.no-background-color {
+  background: #fff !important;
+}
+
+.middle-container .middle-wrap {
+  padding: 5em 0 5em 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+.middle-container h4 {
+  max-width: 410px;
+  margin: 0 auto;
+  font-family: helvetica;
+  font-size: 22px;
+  line-height: 1;
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.middle-container p {
+  font-family: helvetica;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5em;
+  color: #3d434d;
+}
+
+.middle-container {
+  background-color: #f2f3f4;
+}
+
+.middle-container .middle-wrap {
+  padding: 5em 0 5em 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+.middle-container .heading {
+  color: #000;
+  font-size: 36px;
+  font-family: Conv_Vitesse-Bold;
+}
+
+.middle-container h2 {
+  margin: 0;
+  margin-bottom: 0px;
+  line-height: 1;
+  color: #195590;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.social {
+  margin: auto;
+  text-align: center;
+}
+
+.social img {
+  padding: 1em 1em;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 277px;
+  background-color: #1d1d1d;
+  margin: 0 auto;
+}
+
+.footer-container .footer-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.footer-container .phone-number-footer {
+  float: right;
+  margin-top: -10px;
+}
+
+.footer-wrap .phone-number-footer h4 {
+  font-family: "Helvetica";
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.footer-wrap .phone-number-footer h3 {
+  font-family: "Helvetica";
+  font-size: 58px;
+  font-weight: bold;
+  color: #d71e26;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.footer-container .footer-wrap .terms {
+  width: 600px;
+  text-align: left;
+}
+
+.footer-container p {
+  font-family: Arial;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-container ul li {
+  float: left;
+}
+
+.footer-container ul a {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer-container ul span {
+  margin: 0 10px;
+  color: #fff;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .footer-container .footer-wrap {
+    padding: 10px 10px 0 10px; }
+
+  .footer-container .phone-number-footer {
+    float: none;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .sub-heading-wrap {
+    padding: 0 10px; }
+    .sub-heading-wrap .sub-heading-phone {
+      display: none; }
+    .sub-heading-wrap .logo {
+      float: none;
+      margin: 15px auto; }
+
+  .footer-container .footer-wrap .terms {
+    max-width: 600px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+
+  .footer-wrap .phone-number-footer h3 {
+    font-size: 36px;
+  }
+
+  .footer-container ul {
+    padding-bottom: 1em;
+    display: flex;
+  }
+
+  .footer-container ul li {
+    float: none;
+  }
+
+  .footer-container ul a {
+    font-size: 10px;
+  }
+}
