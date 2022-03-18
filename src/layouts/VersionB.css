@@ -90,6 +90,10 @@
   background-position: center right !important;
 }
 
+.versionB .landscape-image-mobile {
+	display: none;
+}
+
 .landscape-wrap {
   width: 100%;
   max-width: 1200px;
@@ -202,7 +206,7 @@
   background-color: #f2f3f4;
   text-align: center;
   margin-top: -40px;
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 
 .grid-container {
@@ -331,14 +335,14 @@
 	  text-align: center;
 	}
 
-	.btnGroup-mobile {
+	.versionB .btnGroup-mobile {
 	  display: block;
 	  margin: 0 auto;
 	  margin-top: 0px;
-	  background-color: rgba(33, 38, 52, 0.6);
+	  background-color: rgba(33, 38, 52, 1);
 	  padding: 10px 5px;
 	  margin-top: 115px;
-	  position: fixed;
+	  position: unset;
 	  top: 0;
 	  z-index: 22;
 	  width: 100%;
@@ -358,6 +362,11 @@
 
 	.landscape-container {
 	    min-height: 300px;
+	}
+
+	.versionB .landscape-image-mobile {
+	    max-width: 100%;
+	    display: block;
 	}
 
 	.col {

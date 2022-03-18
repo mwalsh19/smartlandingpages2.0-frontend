@@ -290,6 +290,7 @@
 	.versionA {
 		overflow-x: hidden;
 	}
+
 	.sub-heading {
 	    background: rgb(33, 38, 52, 1) !important;
 	    padding: 0 !important;
@@ -299,12 +300,12 @@
 	    top: 0;
 	}
 
-	.btnGroup-mobile {
+	.versionA .btnGroup-mobile {
 	  margin-top: 90px;
 	  text-align: center;
 	}
 
-	.btnGroup-mobile {
+	.versionA .btnGroup-mobile {
 	  display: block;
 	  margin: 0 auto;
 	  margin-top: 0px;

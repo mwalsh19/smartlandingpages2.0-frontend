@@ -51,7 +51,7 @@ function VersionA(props) {
 	              </div>
 	            </div>
 	          </div>
-	          <div className="col-2 col background-middle" style={{backgroundImage: 'url(https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/st-experienced-driver-gfx.jpg)'}}>
+	          <div className="col-2 col background-middle" style={{backgroundImage: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_2})`}}>
 	        </div>
 	      </div>
 	    </div>
@@ -148,10 +148,10 @@ function VersionA(props) {
 	  <div className="map-section">
 	    <div className="grid-container">
 	      <div>
-	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>HIRING AREAS AND TERMINALS</h2>
+	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.body_image_4_title}</h2>
 	      </div>
 	      <div className="center">
-	        <img src="https://systemtrans.com/landing-pages/vendor/systrans/images/maps/ST-Hiring-Terminal-Map.png" alt="Terminal Map" />
+	        <img src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_4}`} alt={props.pageData.landingPage.body_image_4_title} />
 	      </div>
 	    </div>
 	  </div>
@@ -169,8 +169,8 @@ function VersionA(props) {
 	          *BY COMPLETING THIS FORM, I AGREE TO RECEIVE CORRESPONDENCE FROM {props.pageData.client.name}. THIS INCLUDES RECEIVING TELEPHONE CALLS, PRERECORDED MESSAGES, TEXT MESSAGES AND EMAILS ABOUT TRUCKING JOB OPPORTUNITIES AT THE CONTACT NUMBER AND ADDRESS I HAVE PROVIDED ABOVE. I UNDERSTAND THAT I AM NOT REQUIRED TO PROVIDE MY CONSENT AS A CONDITION OF SUBMITTING MY APPLICATION.
 	        </p>
 	        <ul>
-	          <li><a href="<?php echo $privacy_url; ?>" target="_blank">Privacy Policy</a><span>|</span></li>
-	          <li><a rel="noreferrer" target="blank" href="<?php echo $website_url ?>">**website_name**</a><span>|</span></li>
+	          <li><a href="/" target="_blank">Privacy Policy</a><span>|</span></li>
+	          <li><a rel="noreferrer" target="blank" href={props.pageData.client.website}>{props.pageData.client.name}</a><span>|</span></li>
 	          <li><a href="https://intelliapp2.driverapponline.com/c/<?php echo $intellaappPath; ?>?r=<?php echo $data->intelliapp_referral_code ?>" target="_blank" rel="noreferrer">Online Application</a></li>
 	        </ul>
 	      </div>

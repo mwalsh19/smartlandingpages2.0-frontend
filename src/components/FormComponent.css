@@ -56,4 +56,15 @@
 	    text-align: center;
 	    margin-top: 189px;
 	}
+
+	.versionB .leadForm {
+	    width: 96%;
+    	position: unset;
+	    text-align: center;
+	    margin-top: 0;
+	}
+
+	.formImage {
+		display: none;
+	}
 }

@@ -87,8 +87,6 @@ const FormComponent = (props) => {
 	    return newErrors;
 	}
 
-	console.log(props);
-
 
   return (
     

@@ -1,5 +1,6 @@
  import React from 'react';
 import './VersionB.css';
+import anniversaryIcon from '../images/50th-logo-icon.png';
 import FormComponent from '../components/FormComponent';
 
 function VersionB(props) {
@@ -19,6 +20,7 @@ function VersionB(props) {
 	        </div>
 	      </div>
 	      <div className="btnGroup-mobile clearfix">
+	      	<img src={anniversaryIcon} alt="annivesary" />
 	        <div className="grouBtn-wrap">
 	          <a href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Call {props.pageData.landingPage.phone}</a>
 	          <a href="#quickForm" id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
@@ -27,6 +29,7 @@ function VersionB(props) {
 	      <div className="top-container">
 	        <div className="top-container-wrap">
 	          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
+	            <img className="landscape-image-mobile" src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background}`} alt="Background" />
 	            <FormComponent landingPageName={props.landingPageName} styleColors={props.pageData.client} version={props.pageData.template.name} />
 	            <div className="landscape-wrap">
 	              <div id="main-description" className="main-description">
@@ -136,17 +139,17 @@ function VersionB(props) {
 	              </div>
 	            </div>
 	          </div>
-	          <div className="col-2 col background-middle second" style={{backgroundImage: 'url(https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/st-experienced-driver-gfx.jpg)'}}>
+	          <div className="col-2 col background-middle second" style={{backgroundImage: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_2})`}}>
 	        </div>
 	      </div>
 	    </div>
 	    <div className="map-section">
 	    <div className="grid-container">
 	      <div>
-	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>HIRING AREAS AND TERMINALS</h2>
+	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.body_image_4_title}</h2>
 	      </div>
 	      <div className="center">
-	        <img src="https://systemtrans.com/landing-pages/vendor/systrans/images/maps/ST-Hiring-Terminal-Map.png" alt="Terminal Map" />
+	        <img src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_4}`} alt={props.pageData.landingPage.body_image_4_title} />
 	      </div>
 	    </div>
 	  </div>
@@ -171,8 +174,8 @@ function VersionB(props) {
 	          *BY COMPLETING THIS FORM, I AGREE TO RECEIVE CORRESPONDENCE FROM {props.pageData.client.name}. THIS INCLUDES RECEIVING TELEPHONE CALLS, PRERECORDED MESSAGES, TEXT MESSAGES AND EMAILS ABOUT TRUCKING JOB OPPORTUNITIES AT THE CONTACT NUMBER AND ADDRESS I HAVE PROVIDED ABOVE. I UNDERSTAND THAT I AM NOT REQUIRED TO PROVIDE MY CONSENT AS A CONDITION OF SUBMITTING MY APPLICATION.
 	        </p>
 	        <ul>
-	          <li><a href="<?php echo $privacy_url; ?>" target="_blank">Privacy Policy</a><span>|</span></li>
-	          <li><a rel="noreferrer" target="blank" href="<?php echo $website_url ?>">**website_name**</a><span>|</span></li>
+	          <li><a href="/" target="_blank">Privacy Policy</a><span>|</span></li>
+	          <li><a rel="noreferrer" target="blank" href={props.pageData.client.website}>{props.pageData.client.name}</a><span>|</span></li>
 	          <li><a href="https://intelliapp2.driverapponline.com/c/<?php echo $intellaappPath; ?>?r=<?php echo $data->intelliapp_referral_code ?>" target="_blank" rel="noreferrer">Online Application</a></li>
 	        </ul>
 	      </div>
