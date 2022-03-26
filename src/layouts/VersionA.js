@@ -3,7 +3,6 @@ import './VersionA.css';
 import FormComponent from '../components/FormComponent';
 
 function VersionA(props) {
-	console.log(props);
   return (
 	<div className="versionA">
 	  <div className="main systrans-landing-page-1">
@@ -27,7 +26,7 @@ function VersionA(props) {
 	      </div>
 	      <div className="top-container">
 	        <div className="top-container-wrap">
-	          <FormComponent landingPageName={props.landingPageName} styleColors={props.pageData.client} version={props.pageData.template.name} />
+	          <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
 	          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
 	            <div className="landscape-wrap">
 	              <div id="main-description" className="main-description">

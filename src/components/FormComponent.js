@@ -6,23 +6,27 @@ import { createApplicantData } from "../actions/landingpages";
 import { useNavigate } from 'react-router-dom';
 import './FormComponent.css';
 import Form from 'react-bootstrap/Form';
-
-const initialFormData = Object.freeze({
-	first_name: "",
-	last_name: "",
-	email: "",
-	phone_number: "",
-	address: "",
-	city: "",
-	state: "",
-	zip: "",
-	experience: "",
-	cdl: ""
-});
+import Reaptcha from 'reaptcha';
 
 const FormComponent = (props) => {
+
+	const initialFormData = Object.freeze({
+		first_name: "",
+		last_name: "",
+		email: "",
+		phone_number: "",
+		address: "",
+		city: "",
+		state: "",
+		zip: "",
+		experience: "",
+		cdl: "",
+		referral_code: props.referralCode
+	});
+
 	const [ formData, setForm ] = React.useState(initialFormData)
 	const [ errors, setErrors ] = React.useState({})
+	const [ verified, setVerified ] = React.useState(false)
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -86,6 +90,10 @@ const FormComponent = (props) => {
 
 	    return newErrors;
 	}
+
+	const onVerify = recaptchaResponse => {
+	    setVerified(true);
+	};
 
 
   return (
@@ -268,8 +276,8 @@ const FormComponent = (props) => {
 				        { errors.cdl }
 				    </Form.Control.Feedback>
 		      </div>
-		      <div className="g-recaptcha" data-theme="dark" data-size="normal" data-sitekey="6LeBj8kaAAAAAK7kjxp5a8oHl2KTU4mIrFezWt_v"></div>
-		      <button type="button" className="btn btn-primary submit-button" onClick={handleSubmit}>Submit Application</button>
+		      <Reaptcha sitekey="6LfwHxEfAAAAAN1-NKoLDbsEl-g1JJ5Zh2mrIr18" onVerify={onVerify} theme='dark' />
+		      <button type="button" className="btn btn-primary submit-button" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
 		   </form>
 		</div>
   );

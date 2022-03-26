@@ -23,6 +23,8 @@ ReactDOM.render(
 	    		<Route path={"/:path/:publisher/versionA"} element={<App />} />
 	    		<Route path={"/:path/:publisher/versionB"} element={<App />} />
 	      		<Route path={"/:path/thank-you"} element={<ThankYou />} />
+	      		<Route path={"/:path/:publisher/thank-you"} element={<ThankYou />} />
+	    		<Route path={"/:path/:publisher/versionA/thank-you"} element={<ThankYou />} />
 	      		<Route path={"/404"} element={<NotFound />} />
 	      		<Route path="*" element={<NotFound />} />
 	    	</Routes>

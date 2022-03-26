@@ -13,7 +13,7 @@ function landingPagesReducer(landingPage = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case CREATE_APPLICANT_DATA:
-      return [...landingPage, payload];
+      return {...landingPage, payload};
     case RETRIEVE_LANDINGPAGE:
       return payload;
     case UPDATE_TUTORIAL:

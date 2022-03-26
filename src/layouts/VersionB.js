@@ -30,7 +30,7 @@ function VersionB(props) {
 	        <div className="top-container-wrap">
 	          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
 	            <img className="landscape-image-mobile" src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background}`} alt="Background" />
-	            <FormComponent landingPageName={props.landingPageName} styleColors={props.pageData.client} version={props.pageData.template.name} />
+	            <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
 	            <div className="landscape-wrap">
 	              <div id="main-description" className="main-description">
 	                <div className="primary-description">
