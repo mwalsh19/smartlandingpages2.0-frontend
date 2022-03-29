@@ -18,11 +18,9 @@ ReactDOM.render(
     <Provider store={store}>
     	<BrowserRouter basename="/landing-pages">
 			<Routes>
-	    		<Route path={"/:path"} element={<App />} />
 	    		<Route path={"/:path/:publisher"} element={<App />} />
 	    		<Route path={"/:path/:publisher/versionA"} element={<App />} />
 	    		<Route path={"/:path/:publisher/versionB"} element={<App />} />
-	      		<Route path={"/:path/thank-you"} element={<ThankYou />} />
 	      		<Route path={"/:path/:publisher/thank-you"} element={<ThankYou />} />
 	    		<Route path={"/:path/:publisher/versionA/thank-you"} element={<ThankYou />} />
 	      		<Route path={"/404"} element={<NotFound />} />

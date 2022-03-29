@@ -18,9 +18,9 @@ export const createApplicantData = (formData) => async (dispatch) => {
     return Promise.reject(err);
   }
 };
-export const retrieveLandingPage = (path) => async (dispatch) => {
+export const retrieveLandingPage = (path, publisher) => async (dispatch) => {
   try {
-    const res = await LandingPagesDataService.getLandingPage(path);
+    const res = await LandingPagesDataService.getLandingPage(path, publisher);
     dispatch({
       type: RETRIEVE_LANDINGPAGE,
       payload: res.data,

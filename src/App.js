@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(retrieveLandingPage(path));
+    dispatch(retrieveLandingPage(path, publisher));
   }, []);
 
   if (publisher && publisher !== landingPageData?.publisher?.publisher) {

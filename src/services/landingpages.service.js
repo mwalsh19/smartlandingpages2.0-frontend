@@ -1,8 +1,8 @@
 import http from "../http-common";
 class LandingPagesDataService {
-  getLandingPage(path) {    
+  getLandingPage(path, publisher) {    
     const token = `?api_token=${process.env.REACT_APP_TOKEN}`;
-    return http.get(`/landing-page/${path}${token}`);
+    return http.get(`/landing-page/${path}/${publisher}/${token}`);
   }
   create(data) {
     console.log('dd', data);
