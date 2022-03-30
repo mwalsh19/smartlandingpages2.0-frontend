@@ -236,6 +236,10 @@
   color: #fff;
 }
 
+.App-thankyou {
+  overflow-x: hidden;
+}
+
 @media screen and (max-width: 1200px) {
 
   .footer-container .footer-wrap {
@@ -259,6 +263,12 @@
     max-width: 600px;
     width: 100%;
   }
+
+  .footer-container {
+    position: relative;
+    left: 50%;
+    margin-left: -305px;
+  }
 }
 @media screen and (max-width: 500px) {
 
@@ -277,5 +287,23 @@
 
   .footer-container ul a {
     font-size: 10px;
+  }
+
+  .middle-container {
+    padding: 0 5px;
+  }
+
+  .footer-container .footer-wrap {
+    padding: 10px 0px 0px 5px !important;
+  }
+
+  .footer-container {
+    position: inherit;
+    left: auto;
+    margin-left: 0; 
+  }
+
+  .footer-container .terms p {
+    width: 95%;
   }
 }
