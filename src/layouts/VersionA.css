@@ -79,6 +79,16 @@
     padding-top: 17px;
 }
 
+.versionA .footer-container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 277px;
+    background-color: #fff !important;
+    margin: 0 auto;
+    padding-top: 1em;
+    color: #000;
+}
+
 @media(max-width: 1800px) {
 
 	.sub-heading-wrap .logo {

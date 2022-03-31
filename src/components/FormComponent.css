@@ -10,7 +10,7 @@
 	width: 400px;
 	padding: 10px;
 	position: absolute;
-    right: 160px;
+    right: -30px;
     top: 115px;
     z-index: 1;
     text-align: center;
@@ -53,6 +53,10 @@
 
 .g-recaptcha {
 	margin-left: 50px;
+}
+
+.leadForm .form-row {
+	margin-top: -15px;
 }
 
 @media(max-width: 500px) {

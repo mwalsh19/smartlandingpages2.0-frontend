@@ -27,18 +27,18 @@ function VersionA(props) {
 	      </div>
 	      <div className="top-container">
 	        <div className="top-container-wrap">
-	          <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
-	          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
-	            <div className="landscape-wrap">
-	              <div id="main-description" className="main-description">
-	                <div className="primary-description">
-	                  <h3 dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_title}}></h3>
-	                </div>
-	                <div className="secondary-description desktop-only" dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_description}}>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
+		          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
+		            <div className="landscape-wrap">
+		              <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
+		              <div id="main-description" className="main-description">
+		                <div className="primary-description">
+		                  <h3 dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_title}}></h3>
+		                </div>
+		                <div className="secondary-description desktop-only" dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_description}}>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
 	        </div>
 	      </div>
 	      <div className="middle-container relative">
