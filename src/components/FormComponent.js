@@ -103,7 +103,7 @@ const FormComponent = (props) => {
 		{
 			props.version === 'VersionA' &&
 			<div>
-				<h2>Get Started Today.</h2>
+				<h2 className="caps">Get Started Today.</h2>
 				<img src={downArrow} alt="Form Icon" />
 				<p>Fill out our short form below and a recruiter will call you.</p>
 			</div>
@@ -277,7 +277,7 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 		      <Reaptcha sitekey="6LfwHxEfAAAAAN1-NKoLDbsEl-g1JJ5Zh2mrIr18" onVerify={onVerify} theme='dark' />
-		      <button type="button" className="btn btn-primary submit-button" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
+		      <button type="button" className="btn btn-primary submit-button caps" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
 		   </form>
 		</div>
   );

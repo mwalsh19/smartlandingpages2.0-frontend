@@ -8,6 +8,7 @@ import VersionA from './layouts/VersionA';
 import VersionB from './layouts/VersionB';
 import DocumentTitle from 'react-document-title';
 import { useNavigate } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 function App() {
 
@@ -22,6 +23,11 @@ function App() {
 
   if (publisher && publisher !== landingPageData?.publisher?.publisher) {
     navigate('/404');
+  }
+
+  if (landingPageData?.landingPage?.ga_lp) {
+    const TRACKING_ID = landingPageData?.landingPage?.ga_lp;
+    ReactGA.initialize(TRACKING_ID);
   }
 
   return (

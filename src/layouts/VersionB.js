@@ -11,8 +11,9 @@ function VersionB(props) {
 	      <div className="">
 	        <div id="sub-heading" className="sub-heading">
 	          <div className="sub-heading-wrap clearfix">
-	            <div className="logo" style={{ backgroundImage: `url(https://smartlandingpages.lacedagency.com/uploads/logos/${props.pageData.client.logo})` }}>
-	          </div>
+	            <div className="logo">
+	            	<img src={`https://smartlandingpages.lacedagency.com/uploads/logos/${props.pageData.client.logo}`} alt="logo" />
+	          	</div>
 	          <div className="sub-heading-phone">
 	            <span>Call now to speak with a recruiter</span>
 	            <h1 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.phone}</h1>
@@ -129,7 +130,7 @@ function VersionB(props) {
 	    </div>
 	  </div>
 
-	      <div className="relative">
+	      <div className="middle-container relative">
 	        <div className="row middle-container-wrap clearfix">
 	          <div className="col-2 col first">
 	            <div className="text">

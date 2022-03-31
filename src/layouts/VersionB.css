@@ -319,6 +319,27 @@
 	color: #000 !important;
 }
 
+.versionB .middle-container h2, .versionB .middle-container p {
+  text-align: left;
+}
+
+.versionB .middle-container h2 {
+  color: #212634;
+  font-family: Conv_Vitesse-Bold;
+}
+
+.versionB .middle-container h3 {
+  font-size: 18px;
+}
+
+.versionB .middle-container p {
+  color: #252525;
+  font-size: 18px;
+}
+
+.versionB .sub-heading-wrap .logo { 
+    padding-top: 17px;
+}
 
 @media(max-width: 500px) {
 	.sub-heading {

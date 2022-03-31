@@ -57,6 +57,28 @@
   align-items: center;
 }
 
+.versionA .middle-container h2, .versionA .middle-container p {
+	text-align: left;
+}
+
+.versionA .middle-container h2 {
+	color: #212634;
+	font-family: Conv_Vitesse-Bold;
+}
+
+.versionA .middle-container h3 {
+	font-size: 18px;
+}
+
+.versionA .middle-container p {
+	color: #252525;
+	font-size: 18px;
+}
+
+.versionA .sub-heading-wrap .logo { 
+    padding-top: 17px;
+}
+
 @media(max-width: 1800px) {
 
 	.sub-heading-wrap .logo {
