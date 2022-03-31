@@ -11,13 +11,13 @@ import { useNavigate } from 'react-router-dom';
 
 function App() {
 
-  let { path, publisher } = useParams();
+  let { path, publisher, version } = useParams();
   let navigate = useNavigate();
   const landingPageData = useSelector((state) => state.landingpages);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(retrieveLandingPage(path, publisher));
+    dispatch(retrieveLandingPage(path, publisher, version));
   }, []);
 
   if (publisher && publisher !== landingPageData?.publisher?.publisher) {

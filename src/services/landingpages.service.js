@@ -1,7 +1,10 @@
 import http from "../http-common";
 class LandingPagesDataService {
-  getLandingPage(path, publisher) {    
+  getLandingPage(path, publisher, version) {    
     const token = `?api_token=${process.env.REACT_APP_TOKEN}`;
+    if (version) {
+      return http.get(`/landing-page/${path}/${publisher}/${version}${token}`);
+    }
     return http.get(`/landing-page/${path}/${publisher}${token}`);
   }
   create(data) {
