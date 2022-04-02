@@ -15,7 +15,7 @@ function VersionA(props) {
 	          	</div>
 	          <div className="sub-heading-phone">
 	            <span>Call now to speak with a recruiter</span>
-	            <h1 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.phone}</h1>
+	            <h1 style={{color: props.pageData.client.color_scheme_accent}}>{props.pageData.landingPage.phone}</h1>
 	          </div>
 	        </div>
 	      </div>
@@ -145,10 +145,10 @@ function VersionA(props) {
 	      </div>
 	    </div>
 	  </div>
-	  <div className="map-section">
+	  <div className="map-section" style={{backgroundColor: props.pageData.client.color_scheme_headline}}>
 	    <div className="grid-container">
 	      <div>
-	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.body_image_4_title}</h2>
+	        <h2 style={{color: props.pageData.client.color_scheme_accent}}>{props.pageData.landingPage.body_image_4_title}</h2>
 	      </div>
 	      <div className="center">
 	        <img src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_4}`} alt={props.pageData.landingPage.body_image_4_title} />
@@ -160,7 +160,7 @@ function VersionA(props) {
 	    <div className="footer-wrap">
 	      <div className="phone-number-footer">
 	        <h4>Call now to speak with a recruiter.</h4>
-	        <h3 style={{color: props.pageData.client.color_scheme_headline}}>
+	        <h3 style={{color: props.pageData.client.color_scheme_accent}}>
 	        {props.pageData.landingPage.phone}
 	        </h3>
 	      </div>

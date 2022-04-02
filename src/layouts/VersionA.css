@@ -118,7 +118,7 @@
 	}
 
 	.landscape-container {
-	  min-height: 900px;
+	  min-height: 1080px;
 	  background-repeat: no-repeat;
 	  background-size: cover !important;
 	  background-position: center right !important;

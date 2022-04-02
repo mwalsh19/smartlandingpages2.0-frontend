@@ -146,7 +146,7 @@ const FormComponent = (props) => {
 		         		type='email' 
 		         		onChange={ e => setField('email', e.target.value) }
 		         		isInvalid={ !!errors.email }
-		         		placeholder="Email Address"
+		         		placeholder="Email"
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.email }
@@ -157,7 +157,7 @@ const FormComponent = (props) => {
 		         		type='text' 
 		         		onChange={ e => setField('phone_number', e.target.value) }
 		         		isInvalid={ !!errors.phone_number }
-		         		placeholder="Phone Number"
+		         		placeholder="Phone"
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.phone_number }
@@ -168,7 +168,7 @@ const FormComponent = (props) => {
 		         		type='text' 
 		         		onChange={ e => setField('address', e.target.value) }
 		         		isInvalid={ !!errors.address }
-		         		placeholder="Street Address"
+		         		placeholder="Address"
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.address }
@@ -189,7 +189,7 @@ const FormComponent = (props) => {
 		      <div className="col">
 		         <Form.Control as='select' onChange={ e => setField('state', e.target.value) }
 		         		isInvalid={ !!errors.state }>
-		            <option value="">Select a State</option>
+		            <option value="">State</option>
 		            <option value="AL">Alabama</option>
 		            <option value="AZ">Arizona</option>
 		            <option value="AR">Arkansas</option>
@@ -254,7 +254,7 @@ const FormComponent = (props) => {
 		      <div className="form-group">
 		         <Form.Control as='select' onChange={ e => setField('experience', e.target.value) }
 		         		isInvalid={ !!errors.experience }>
-		            <option value="">Years of Experience?</option>
+		            <option value="">Years of verifiable driving experience?</option>
 		            <option value="4-6-months">4 - 6 Months</option>
 		            <option value="6-12-months">6 - 12 Months</option>
 		            <option value="1-3-years">1 - 3 Years</option>
@@ -268,9 +268,9 @@ const FormComponent = (props) => {
 		      <div className="form-group">
 		         <Form.Control as='select' onChange={ e => setField('cdl', e.target.value) }
 		         		isInvalid={ !!errors.cdl }>
-		            <option value=''>Do you have your Class A CDL?</option>
+		            <option value=''>Do you have a valid Class A CDL?</option>
 		            <option value='1'>Yes</option>
-		            <option value='0'>No</option>
+		            <option value='0'>No</option> 
 		          </Form.Control>
 		          <Form.Control.Feedback type='invalid'>
 				        { errors.cdl }
