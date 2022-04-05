@@ -337,18 +337,22 @@
 }
 
 .versionB .sub-heading-wrap .logo { 
-    padding-top: 17px;
+  display: flex;
+  align-items: center;
 }
 
 @media(max-width: 500px) {
 	.sub-heading {
-	    background: rgb(33, 38, 52, 1) !important;
 	    padding: 0 !important;
 	    position: fixed;
 	    z-index: 21;
 	    width: 100%;
 	    top: 0;
 	}
+
+  .versionB .sub-heading-wrap .logo { 
+    padding-top: 0;
+  }
 
 	.btnGroup-mobile {
 	  margin-top: 90px;
@@ -359,14 +363,20 @@
 	  display: block;
 	  margin: 0 auto;
 	  margin-top: 0px;
-	  background-color: rgba(33, 38, 52, 1);
 	  padding: 10px 5px;
-	  margin-top: 115px;
+    margin-top: 115px;
 	  position: unset;
 	  top: 0;
 	  z-index: 22;
 	  width: 100%;
 	}
+
+  .versionB .btnGroup-mobile a {
+    font-size: 20px;
+    font-family: helvetica;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
 	#callBtn {
 	  margin-right: 10px;

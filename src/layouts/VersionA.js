@@ -1,6 +1,14 @@
- import React from 'react';
+import React from 'react';
 import './VersionA.css';
 import FormComponent from '../components/FormComponent';
+
+const toTopScroll = () => {
+	window.scrollTo(0,0);
+}
+
+const backgroundColorCalc = (color) => {
+	return window.innerWidth < 762 ? color : color + 'bf';
+}
 
 function VersionA(props) {
   return (
@@ -8,7 +16,7 @@ function VersionA(props) {
 	  <div className="main systrans-landing-page-1">
 	    <div className="main-wrap">
 	      <div className="">
-	        <div id="sub-heading" className="sub-heading">
+	        <div id="sub-heading" className="sub-heading" style={{backgroundColor:backgroundColorCalc(props.pageData.client.color_scheme_sub_headline) }}>
 	          <div className="sub-heading-wrap clearfix">
 	            <div className="logo">
 	            	<img src={`https://smartlandingpages.lacedagency.com/uploads/logos/${props.pageData.client.logo}`} alt="logo" />
@@ -21,8 +29,8 @@ function VersionA(props) {
 	      </div>
 	      <div className="btnGroup-mobile clearfix">
 	        <div className="grouBtn-wrap">
-	          <a href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Click to Call</a>
-	          <a href="#quickForm" id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
+	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Click to Call</a>
+	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} onClick={toTopScroll} id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
 	        </div> 
 	      </div>
 	      <div className="top-container">

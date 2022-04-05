@@ -115,7 +115,7 @@ const FormComponent = (props) => {
 			props.version === 'div290chicagoarea' ||
 			props.version === 'div296') &&
 			<div>
-				<h2 className="caps">Get Started Today.</h2>
+				<h2 className="caps" id="quickForm">Get Started Today.</h2>
 				<img src={downArrow} alt="Form Icon" />
 				<p>Fill out our short form below and a recruiter will call you.</p>
 			</div>
@@ -124,8 +124,8 @@ const FormComponent = (props) => {
 		{
 			props.version === 'VersionB' &&
 			<div>
-				<h2>Apply Today.</h2>
 				<img className="formImage" src={anniversaryIcon} alt="Form Icon" />
+				<h2 className="caps">Apply Today.</h2>
 			</div>
 		}
 		   <form>
@@ -288,8 +288,10 @@ const FormComponent = (props) => {
 				        { errors.cdl }
 				    </Form.Control.Feedback>
 		      </div>
-		      <Reaptcha sitekey="6LfwHxEfAAAAAN1-NKoLDbsEl-g1JJ5Zh2mrIr18" onVerify={onVerify} theme='dark' />
-		      <button type="button" className="btn btn-primary submit-button caps" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
+			  <div className="g-recaptcha-div">
+			  	<Reaptcha sitekey="6LfwHxEfAAAAAN1-NKoLDbsEl-g1JJ5Zh2mrIr18" onVerify={onVerify} theme='dark' />
+			  </div>
+		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
 		   </form>
 		</div>
   );

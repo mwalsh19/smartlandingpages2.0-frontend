@@ -19,6 +19,7 @@
 .leadForm h2 {
 	color: white;
 	font-family: Conv_Vitesse-Bold;
+	font-size: 34px;
 }
 
 .leadForm p {
@@ -26,25 +27,18 @@
 	color: white;
 }
 
-.leadForm input, .leadForm select {
-	/*background: rgba(255,255,255,.5);*/
-}
-
-.form-row {
-	/*padding: 10px 0 15px 0;*/
-}
-
 .formImage {
-	width:70%;
+	width: 100%;
 }
 
 .submit-button {
-	background: none;
+	background-color: none;
 	border: 0;
 }
 
-.submit-button:hover, .submit-button:focus {
+.submit-button:hover, .submit-button:focus, .submit-button:active, .submit-button:visited {
 	background: none;
+	outline: 0;
 }
 
 .invalid-feedback {
@@ -66,7 +60,7 @@
 	    width: 96%;
     	position: unset;
 	    text-align: center;
-	    margin-top: 189px;
+		margin-top: 189px;
 	}
 
 	.versionB .leadForm {
@@ -78,5 +72,13 @@
 
 	.formImage {
 		display: none;
+	}
+
+	.g-recaptcha-div {
+		display: flex;
+	}
+	
+	.g-recaptcha {
+		margin: auto;
 	}
 }

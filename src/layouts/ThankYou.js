@@ -17,7 +17,7 @@ const ThankYou = () => {
 
   return (
   	<DocumentTitle title={'Thank You'}>
-	    <div className="App">
+	    <div className="thank-you">
 		      <div className="main-wrap">
 			    <div id="sub-heading" className="sub-heading">
 			            <div className="sub-heading-wrap clearfix">

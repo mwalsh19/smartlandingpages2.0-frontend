@@ -322,8 +322,11 @@
 		overflow-x: hidden;
 	}
 
+	.versionA .sub-heading-wrap .logo { 
+		padding-top: 0;
+	}
+
 	.sub-heading {
-	    background: rgb(33, 38, 52, 1) !important;
 	    padding: 0 !important;
 	    position: fixed;
 	    z-index: 21;
@@ -334,6 +337,13 @@
 	.versionA .btnGroup-mobile {
 	  margin-top: 90px;
 	  text-align: center;
+	}
+
+	.versionA .btnGroup-mobile a {
+		font-size: 20px;
+		font-family: helvetica;
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 
 	.versionA .btnGroup-mobile {

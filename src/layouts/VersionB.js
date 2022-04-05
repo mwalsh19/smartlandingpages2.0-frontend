@@ -1,7 +1,15 @@
- import React from 'react';
+import React from 'react';
 import './VersionB.css';
 import anniversaryIcon from '../images/50th-logo-icon.png';
 import FormComponent from '../components/FormComponent';
+
+const toTopScroll = () => {
+	window.scrollTo(0,0);
+}
+
+const backgroundColorCalc = (color) => {
+	return window.innerWidth < 762 ? color : color + 'bf';
+}
 
 function VersionB(props) {
   return (
@@ -9,22 +17,22 @@ function VersionB(props) {
 	  <div className="main systrans-landing-page-1">
 	    <div className="main-wrap">
 	      <div className="">
-	        <div id="sub-heading" className="sub-heading">
+	        <div id="sub-heading" className="sub-heading" style={{backgroundColor:backgroundColorCalc(props.pageData.client.color_scheme_sub_headline) }}>
 	          <div className="sub-heading-wrap clearfix">
 	            <div className="logo">
 	            	<img src={`https://smartlandingpages.lacedagency.com/uploads/logos/${props.pageData.client.logo}`} alt="logo" />
 	          	</div>
 	          <div className="sub-heading-phone">
 	            <span>Call now to speak with a recruiter</span>
-	            <h1 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.phone}</h1>
+	            <h1 style={{color: props.pageData.client.color_scheme_accent}}>{props.pageData.landingPage.phone}</h1>
 	          </div>
 	        </div>
 	      </div>
-	      <div className="btnGroup-mobile clearfix">
+	      <div className="btnGroup-mobile clearfix" style={{backgroundColor:backgroundColorCalc(props.pageData.client.color_scheme_headline) }}>
 	      	<img src={anniversaryIcon} alt="annivesary" />
 	        <div className="grouBtn-wrap">
-	          <a href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Call {props.pageData.landingPage.phone}</a>
-	          <a href="#quickForm" id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
+	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Call {props.pageData.landingPage.phone}</a>
+	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} onClick={toTopScroll} id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
 	        </div> 
 	      </div>
 	      <div className="top-container">
@@ -144,10 +152,10 @@ function VersionB(props) {
 	        </div>
 	      </div>
 	    </div>
-	    <div className="map-section">
+	    <div className="map-section" style={{backgroundColor: props.pageData.client.color_scheme_headline}}>
 	    <div className="grid-container">
 	      <div>
-	        <h2 style={{color: props.pageData.client.color_scheme_headline}}>{props.pageData.landingPage.body_image_4_title}</h2>
+	        <h2 style={{color: props.pageData.client.color_scheme_accent}}>{props.pageData.landingPage.body_image_4_title}</h2>
 	      </div>
 	      <div className="center">
 	        <img src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.body_image_4}`} alt={props.pageData.landingPage.body_image_4_title} />
@@ -166,7 +174,7 @@ function VersionB(props) {
 	    <div className="footer-wrap">
 	      <div className="phone-number-footer">
 	        <h4>Call now to speak with a recruiter.</h4>
-	        <h3 style={{color: props.pageData.client.color_scheme_headline}}>
+	        <h3 style={{color: props.pageData.client.color_scheme_accent}}>
 	        {props.pageData.landingPage.phone}
 	        </h3>
 	      </div>
