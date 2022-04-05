@@ -34,7 +34,19 @@ function App() {
     <DocumentTitle title={landingPageData?.landingPage?.title || 'Landing Pages'}>
       <div>
         {
-          landingPageData?.template?.name === 'VersionA' &&
+          (landingPageData?.template?.name === 'VersionA' ||
+          landingPageData?.template?.name === 'div227' || 
+          landingPageData?.template?.name === 'div273-div274' || 
+          landingPageData?.template?.name === 'div290' || 
+          landingPageData?.template?.name === 'div290columbus' ||
+          landingPageData?.template?.name === 'div290clevelandarea' ||
+          landingPageData?.template?.name === 'div290omaha' || 
+          landingPageData?.template?.name === 'div290topeka' ||
+          landingPageData?.template?.name === 'div290indianapolis' || 
+          landingPageData?.template?.name === 'div290desmoines' ||
+          landingPageData?.template?.name === 'div290kansascitymo' ||
+          landingPageData?.template?.name === 'div290chicagoarea' ||
+          landingPageData?.template?.name === 'div296') &&
           <VersionA pageData={landingPageData} landingPageName={path} />
         }
 

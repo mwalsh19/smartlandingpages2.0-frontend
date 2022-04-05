@@ -240,6 +240,10 @@
   overflow-x: hidden;
 }
 
+.pixel {
+  position: absolute;
+}
+
 @media screen and (max-width: 1200px) {
 
   .footer-container .footer-wrap {

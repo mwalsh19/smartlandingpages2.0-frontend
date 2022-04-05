@@ -28,6 +28,10 @@ const ThankYou = () => {
 			                </div>
 			            </div>
 			    </div>
+				{
+					landingPageData.publisher.pixel &&
+					<img className="pixel" src={landingPageData.publisher.pixel} width="1" height="1"/>
+				}
 			    <div className="header">
 			      <div className="header-wrap">
 			        <div className="checked-icon"></div>
@@ -55,8 +59,8 @@ const ThankYou = () => {
 			        <p>Join our fast-growing community on your favorite social networks for news, tips, photos and a place to share your experiences.
 			         Or check us out to see what it's like to be a part of the {landingPageData?.client.name} family!</p>
 			         <div className="social">
-			          <a href="<?php echo $fb_url ?>" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/fb-icon-st.png" alt="facebook" /></a>
-			          <a href="<?php echo $ig_url ?>" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/ig-icon-st.png" alt="instagram" /></a>
+			          <a href="https://www.facebook.com/SystemTransport/" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/fb-icon-st.png" alt="facebook" /></a>
+			          <a href="https://www.instagram.com/system_transport/" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/ig-icon-st.png" alt="instagram" /></a>
 			         </div> 
 			      </div>
 			    </div>
@@ -72,9 +76,9 @@ const ThankYou = () => {
 			                        *BY COMPLETING THIS FORM, I AGREE TO RECEIVE CORRESPONDENCE FROM {landingPageData.client.name}. THIS INCLUDES RECEIVING TELEPHONE CALLS, PRERECORDED MESSAGES, TEXT MESSAGES AND EMAILS ABOUT TRUCKING JOB OPPORTUNITIES AT THE CONTACT NUMBER AND ADDRESS I HAVE PROVIDED ABOVE. I UNDERSTAND THAT I AM NOT REQUIRED TO PROVIDE MY CONSENT AS A CONDITION OF SUBMITTING MY APPLICATION.
 			                    </p>
 			                    <ul>
-			                        <li><a href="<?php echo $privacy_url; ?>" target="_blank">Privacy Policy</a><span>|</span></li>
+			                        <li><a href={landingPageData.client.website + 'privacy-policy'} target="_blank">Privacy Policy</a><span>|</span></li>
 			                        <li><a rel="noreferrer" target="blank" href={landingPageData.client.website}>{landingPageData.client.name}</a><span>|</span></li>
-			                        <li><a rel="noreferrer" href="https://intelliapp.driverapponline.com/c/<?php echo $intellaappPath; ?>?r=<?php echo $intelliapp_referral_code; ?>" target="_blank">Online Application</a></li>
+			                        <li><a rel="noreferrer" href={"https://intelliapp.driverapponline.com/c/tsystem?r=" + landingPageData.landingPage.referral_code_intelliapp} target="_blank">Online Application</a></li>
 			                    </ul>
 			                </div>
 			            </div>

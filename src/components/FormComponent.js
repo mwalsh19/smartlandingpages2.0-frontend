@@ -101,7 +101,19 @@ const FormComponent = (props) => {
 
 		<div className="leadForm" style={{ background: props.styleColors.color_scheme_headline }}>
 		{
-			props.version === 'VersionA' &&
+			(props.version === 'VersionA' ||
+			props.version === 'div227' || 
+			props.version === 'div273-div274' || 
+			props.version === 'div290' || 
+			props.version === 'div290columbus' ||
+			props.version === 'div290clevelandarea' ||
+			props.version === 'div290omaha' || 
+			props.version === 'div290topeka' ||
+			props.version === 'div290indianapolis' || 
+			props.version === 'div290desmoines' ||
+			props.version === 'div290kansascitymo' ||
+			props.version === 'div290chicagoarea' ||
+			props.version === 'div296') &&
 			<div>
 				<h2 className="caps">Get Started Today.</h2>
 				<img src={downArrow} alt="Form Icon" />
