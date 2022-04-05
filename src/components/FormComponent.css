@@ -32,8 +32,12 @@
 }
 
 .submit-button {
-	background-color: none;
+	font-size: 20px;
+    font-family: helvetica;
+    font-weight: bold;
+    text-transform: uppercase;
 	border: 0;
+	margin-top: 10px;
 }
 
 .submit-button:hover, .submit-button:focus, .submit-button:active, .submit-button:visited {

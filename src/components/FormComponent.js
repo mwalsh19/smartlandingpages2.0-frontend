@@ -291,7 +291,7 @@ const FormComponent = (props) => {
 			  <div className="g-recaptcha-div">
 			  	<Reaptcha sitekey="6LfwHxEfAAAAAN1-NKoLDbsEl-g1JJ5Zh2mrIr18" onVerify={onVerify} theme='dark' />
 			  </div>
-		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit}>Submit Application</button>
+		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit} style={{ background: props.styleColors.color_scheme_accent }}>Submit Application</button>
 		   </form>
 		</div>
   );
