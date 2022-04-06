@@ -4,6 +4,12 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import DocumentTitle from 'react-document-title';
+import fbIconST from '../images/fb-icon-st.png';
+import fbIconJJW from '../images/fb-icon-jjw.png';
+import fbIconTWT from '../images/fb-icon-twt.png';
+import igIconST from '../images/ig-icon-st.png';
+import igIconJJW from '../images/ig-icon-jjw.png';
+import igIconTWT from '../images/ig-icon-twt.png';
 
 const ThankYou = () => {
 	const location = useLocation();
@@ -24,7 +30,7 @@ const ThankYou = () => {
 			                <div className="logo" style={{ backgroundImage: `url(https://smartlandingpages.lacedagency.com/uploads/logos/${landingPageData.client.logo})` }}></div>
 			                <div className="sub-heading-phone">
 			                    <span>Call now to speak with a recruiter</span>
-			                    <h1 style={{color: landingPageData?.client.color_scheme_headline}}>{landingPageData?.landingPage?.phone}</h1>
+			                    <h1 style={{color: landingPageData?.client.color_scheme_accent}}>{landingPageData?.landingPage?.phone}</h1>
 			                </div>
 			            </div>
 			    </div>
@@ -39,7 +45,13 @@ const ThankYou = () => {
 			          <h1>Thanks {location.state.first_name}!</h1>
 			          <p>A recruiter will be contacting you soon.<br />
 			            Click below if you would like to complete our full online application.</p>
-			          <a target="_blank" rel="noreferrer" href="https://intelliapp.driverapponline.com/c/<?php echo $intellaappPath; ?>?r=<?php echo $intelliapp_referral_code; ?>" id="applyNowBtn" className="form-control-btn btn">Apply Now</a>
+			          <a 
+					  	target="_blank" 
+						rel="noreferrer" 
+						href={"https://intelliapp.driverapponline.com/c/tsystem?r=" + landingPageData.landingPage.referral_code_intelliapp} 
+						id="applyNowBtn" 
+						className="form-control-btn btn"
+						style={{backgroundColor: landingPageData?.client.color_scheme_accent}}>Apply Now</a>
 			        </div>
 			      </div>
 			    </div>
@@ -47,7 +59,7 @@ const ThankYou = () => {
 			      <div className="middle-wrap">
 			        <h4>Call now to speak to a recruiter</h4>
 			        <div className="sub-heading-phone center">
-			            <h1 style={{color: landingPageData?.client.color_scheme_headline}}>{landingPageData?.landingPage?.phone}</h1>
+			            <h1 style={{color: landingPageData?.client.color_scheme_accent}}>{landingPageData?.landingPage?.phone}</h1>
 			        </div>
 			        <p>If you are not ready at this time, you will be receiving an email shortly <br />
 			          with the above information so you can apply at your convenience.</p>
@@ -59,9 +71,25 @@ const ThankYou = () => {
 			        <p>Join our fast-growing community on your favorite social networks for news, tips, photos and a place to share your experiences.
 			         Or check us out to see what it's like to be a part of the {landingPageData?.client.name} family!</p>
 			         <div className="social">
-			          <a href="https://www.facebook.com/SystemTransport/" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/fb-icon-st.png" alt="facebook" /></a>
-			          <a href="https://www.instagram.com/system_transport/" target="_blank"><img src="https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/ig-icon-st.png" alt="instagram" /></a>
-			         </div> 
+					 	{landingPageData.client.name === 'System Transport' &&
+							<div> 
+								<a href="https://www.facebook.com/SystemTransport/" target="_blank"><img src={fbIconST} alt="facebook" /></a>
+			          			<a href="https://www.instagram.com/system_transport/" target="_blank"><img src={igIconST} alt="instagram" /></a>
+							</div>
+						}
+						{landingPageData.client.name === 'JJWilliams' &&
+							<div> 
+								<a href="https://www.facebook.com/JamesJWilliamsTankers" target="_blank"><img src={fbIconJJW} alt="facebook" /></a>
+			          			<a href="https://www.instagram.com/james.j.williams/" target="_blank"><img src={igIconJJW} alt="instagram" /></a>
+							</div>
+						}
+						{landingPageData.client.name === 'TWT' &&
+							<div> 
+								<a href="https://www.facebook.com/TWTRefrigerated" target="_blank"><img src={fbIconTWT} alt="facebook" /></a>
+			          			<a href="https://www.instagram.com/twt_refrigerated/" target="_blank"><img src={igIconTWT} alt="instagram" /></a>
+							</div>
+						}
+			          </div> 
 			      </div>
 			    </div>
 
@@ -69,7 +97,7 @@ const ThankYou = () => {
 			            <div className="footer-wrap">
 			                <div className="phone-number-footer">
 			                    <h4>Call now to speak with a recruiter.</h4>
-			                    <h3 style={{color: landingPageData?.client.color_scheme_headline}}>{landingPageData?.landingPage?.phone}</h3>
+			                    <h3 style={{color: landingPageData?.client.color_scheme_accent}}>{landingPageData?.landingPage?.phone}</h3>
 			                </div>
 			                <div className="terms">
 			                    <p>
