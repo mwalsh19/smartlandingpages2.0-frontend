@@ -19,15 +19,66 @@ function App() {
 
   useEffect(() => {
     dispatch(retrieveLandingPage(path, publisher, version));
+    // <!-- hiremaster conversion init script -->
+    if (publisher && publisher === 'hiremaster') {
+      const scriptTag = document.createElement('script');
+
+      scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
+      scriptTag.async = true;
+
+      document.body.appendChild(scriptTag);
+      const scriptDataTag = document.createElement('script');
+
+      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
+      scriptDataTag.async = true;
+
+      document.body.appendChild(scriptDataTag);
+
+      return () => {
+        document.body.removeChild(scriptTag);
+        document.body.removeChild(scriptDataTag);
+      }
+    }
+
+    // <!-- truckersreport script -->
+		if (publisher && publisher === 'truckersreport') {
+			console.log('trucker');
+			const scriptDataTag = document.createElement('script');
+	  
+			scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
+			scriptDataTag.async = true;
+	  
+			document.body.appendChild(scriptDataTag);
+	  
+			return () => {
+			  document.body.removeChild(scriptDataTag);
+			}
+		}
   }, []);
+
+  useEffect(() => {
+    if (landingPageData?.landingPage?.ga_lp) {
+      // initialize trackers from the backend
+      ReactGA.initialize( 
+        [
+          {
+            trackingId: landingPageData?.landingPage?.ga_lp,
+            gaOptions: { name: 'landingPageTracker' }
+          },
+          {
+            trackingId: landingPageData?.landingPage?.ga_tp,
+            gaOptions: { name: 'thankyouTracker' }
+          }
+        ],
+        { debug: true, alwaysSendToDefaultTracker: false }
+      );
+      // landing page generic tracker
+      ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+    }
+  }, [landingPageData]);
 
   if (publisher && publisher !== landingPageData?.publisher?.publisher) {
     navigate('/404');
-  }
-
-  if (landingPageData?.landingPage?.ga_lp) {
-    const TRACKING_ID = landingPageData?.landingPage?.ga_lp;
-    ReactGA.initialize(TRACKING_ID);
   }
 
   return (

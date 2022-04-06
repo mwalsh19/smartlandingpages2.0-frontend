@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import './FormComponent.css';
 import Form from 'react-bootstrap/Form';
 import Reaptcha from 'reaptcha';
+import InputMask from "react-input-mask";
 
 const FormComponent = (props) => {
 
@@ -75,14 +76,14 @@ const FormComponent = (props) => {
 
 	    const newErrors = {}
 	    // name errors
-	    if ( !first_name || first_name === '' ) newErrors.first_name = 'This is required.';
-	    if ( !last_name || last_name === '' ) newErrors.last_name = 'This is required.';
+	    if ( !first_name || first_name === '' || first_name.length > 20 ) newErrors.first_name = 'This is required.';
+	    if ( !last_name || last_name === '' || last_name.length > 20 ) newErrors.last_name = 'This is required.';
 
-	    if ( !email || email === '' ) newErrors.email = 'This is required.';
+	    if ( !email || email === '' || !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) newErrors.email = 'This is required.';
 	    if ( !phone_number || phone_number === '' ) newErrors.phone_number = 'This is required.';
 	    if ( !address || address === '' ) newErrors.address = 'This is required.';
 	    if ( !city || city === '' ) newErrors.city = 'This is required.';
-	    if ( !zip || zip === '' ) newErrors.zip = 'This is required.';
+	    if ( !zip || zip === '' || !/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip) ) newErrors.zip = 'This is required.';
 
 	    if ( !state || state === '' ) newErrors.state = 'This is required.';
 	    if ( !experience || experience === '' ) newErrors.experience = 'This is required.';
@@ -136,6 +137,7 @@ const FormComponent = (props) => {
 		         		onChange={ e => setField('first_name', e.target.value) }
 		         		isInvalid={ !!errors.first_name }
 		         		placeholder="First Name"
+						maxLength={20}
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.first_name }
@@ -147,6 +149,7 @@ const FormComponent = (props) => {
 		         		onChange={ e => setField('last_name', e.target.value) }
 		         		isInvalid={ !!errors.last_name }
 		         		placeholder="Last Name"
+						maxLength={20}
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.last_name }
@@ -165,12 +168,15 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 		      <div className="form-group">
-		         <Form.Control 
-		         		type='text' 
-		         		onChange={ e => setField('phone_number', e.target.value) }
-		         		isInvalid={ !!errors.phone_number }
-		         		placeholder="Phone"
-		         	/>
+				  {/* Causing console errors */}
+					<InputMask
+						className="form-control"
+						onChange={ e => setField('phone_number', e.target.value) }
+						isInvalid={ !!errors.phone_number }
+						placeholder="Phone"
+						mask="+1\(999) 999-9999"
+						maskChar=" "
+					/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.phone_number }
 				    </Form.Control.Feedback>
@@ -257,6 +263,7 @@ const FormComponent = (props) => {
 		         		onChange={ e => setField('zip', e.target.value) }
 		         		isInvalid={ !!errors.zip }
 		         		placeholder="Zip Code"
+						maxLength={5}
 		         	/>
 		         	<Form.Control.Feedback type='invalid'>
 				        { errors.zip }

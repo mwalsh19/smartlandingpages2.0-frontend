@@ -10,16 +10,54 @@ import fbIconTWT from '../images/fb-icon-twt.png';
 import igIconST from '../images/ig-icon-st.png';
 import igIconJJW from '../images/ig-icon-jjw.png';
 import igIconTWT from '../images/ig-icon-twt.png';
+import ReactPixel from 'react-facebook-pixel';
+import ReactGA from 'react-ga';
+import { useParams } from "react-router-dom";
 
 const ThankYou = () => {
 	const location = useLocation();
 	const landingPageData = useSelector((state) => state.landingpages);
+	let { path, publisher, version } = useParams();
 	//console.log(landingPageData);
 	window.scrollTo(0,0);
 
 	useEffect(() => {
-       //console.log(location.state);
+       // thank you page generic tracker
+	   if (landingPageData?.landingPage?.ga_tp) {
+			ReactGA.ga('thankyouTracker.send', 'pageview', {'page': window.location.pathname + window.location.search });
+		}
+		// <!-- truckersreport script -->
+		if (publisher && publisher === 'truckersreport') {
+			const scriptDataTag = document.createElement('script');
+	  
+			scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
+			scriptDataTag.async = true;
+	  
+			document.body.appendChild(scriptDataTag);
+	  
+			return () => {
+			  document.body.removeChild(scriptDataTag);
+			}
+		}
     }, [location]);
+
+	// facebook pixel
+	ReactPixel.init('824397174323085');
+	ReactPixel.pageView(); // For tracking page view
+
+	// apply now tracking click event
+	const handleApplyNowEvent = () => {
+		ReactGA.event({
+			category: 'ThankYouPage',
+			action: 'Click',
+			label: 'ApplyNow',
+			value: 1
+		}, ['thankyouTracker']);
+	}
+	// hiremaster conversion
+	if (publisher && publisher === 'hiremaster') {
+		ReactGA.ga('event', 'conversion', { 'send_to': 'AW-318679524/KbRyCO2_nvYCEOTT-pcB' });
+	}
 
   return (
   	<DocumentTitle title={'Thank You'}>
@@ -51,6 +89,7 @@ const ThankYou = () => {
 						href={"https://intelliapp.driverapponline.com/c/tsystem?r=" + landingPageData.landingPage.referral_code_intelliapp} 
 						id="applyNowBtn" 
 						className="form-control-btn btn"
+						onClick={handleApplyNowEvent}
 						style={{backgroundColor: landingPageData?.client.color_scheme_accent}}>Apply Now</a>
 			        </div>
 			      </div>
