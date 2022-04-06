@@ -71,19 +71,19 @@ const ThankYou = () => {
 			        <p>Join our fast-growing community on your favorite social networks for news, tips, photos and a place to share your experiences.
 			         Or check us out to see what it's like to be a part of the {landingPageData?.client.name} family!</p>
 			         <div className="social">
-					 	{landingPageData.client.name === 'System Transport' &&
+					 	{landingPageData.client.name === 'SYSTEMTRANS.COM' &&
 							<div> 
 								<a href="https://www.facebook.com/SystemTransport/" target="_blank"><img src={fbIconST} alt="facebook" /></a>
 			          			<a href="https://www.instagram.com/system_transport/" target="_blank"><img src={igIconST} alt="instagram" /></a>
 							</div>
 						}
-						{landingPageData.client.name === 'JJWilliams' &&
+						{landingPageData.client.name === 'JJWILLIAMS.COM' &&
 							<div> 
 								<a href="https://www.facebook.com/JamesJWilliamsTankers" target="_blank"><img src={fbIconJJW} alt="facebook" /></a>
 			          			<a href="https://www.instagram.com/james.j.williams/" target="_blank"><img src={igIconJJW} alt="instagram" /></a>
 							</div>
 						}
-						{landingPageData.client.name === 'TWT' &&
+						{landingPageData.client.name === 'TWTRANS.COM' &&
 							<div> 
 								<a href="https://www.facebook.com/TWTRefrigerated" target="_blank"><img src={fbIconTWT} alt="facebook" /></a>
 			          			<a href="https://www.instagram.com/twt_refrigerated/" target="_blank"><img src={igIconTWT} alt="instagram" /></a>
