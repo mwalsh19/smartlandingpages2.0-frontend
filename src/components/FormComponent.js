@@ -33,7 +33,7 @@ const FormComponent = (props) => {
 
 	const handleSubmit = (e) => {
 	    e.preventDefault()
-	    console.log(formData);
+	    // console.log(formData);
 
 	    const newErrors = findFormErrors()
 
@@ -114,7 +114,9 @@ const FormComponent = (props) => {
 			props.version === 'div290desmoines' ||
 			props.version === 'div290kansascitymo' ||
 			props.version === 'div290chicagoarea' ||
-			props.version === 'div296') &&
+			props.version === 'div296' ||
+			(props.version === 'VersionB' && props.client === "TWTRANS.COM") ||
+			(props.version === 'VersionB' && props.client === "JJWILLIAMS.COM")) &&
 			<div>
 				<h2 className="caps" id="quickForm">Get Started Today.</h2>
 				<img src={downArrow} alt="Form Icon" />
@@ -123,7 +125,7 @@ const FormComponent = (props) => {
 		}
 
 		{
-			props.version === 'VersionB' &&
+			(props.version === 'VersionB' && props.client === "SYSTEMTRANS.COM") &&
 			<div>
 				<img className="formImage" src={anniversaryIcon} alt="Form Icon" />
 				<h2 className="caps">Apply Today.</h2>

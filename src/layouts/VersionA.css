@@ -315,8 +315,51 @@
 
 }
 
+@media screen and (max-width: 1200px) {
+	.versionA .footer-container {
+		position: inherit;
+		left: auto;
+		margin-left: auto;
+	}
+}
 
-@media(max-width: 500px) {
+@media screen and (max-width: 1000px) {
+	.versionA .middle-container-wrap .row {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.versionA .icon-section {
+		padding: 10px;
+		margin-bottom: 1em;
+	}
+
+	.versionA .icon-section .inline-block {
+		display: block;
+		margin: auto;
+	}
+
+	.versionA .icon-section .col-3 {
+		width: 90%;
+		max-width:90%;
+	}
+
+	.versionA .icon-section .section-text {
+		width: 100%;
+	}
+
+	.versionA .icon-section .section-text p,
+	.versionA .icon-section .section-text h3,
+	.versionA .icon-section h2 {
+		text-align: center;
+	}
+
+	.versionA .map-section h2 {
+		text-align: center;
+	}
+}
+
+@media(max-width: 850px) {
 
 	.versionA {
 		overflow-x: hidden;

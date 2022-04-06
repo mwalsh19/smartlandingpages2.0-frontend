@@ -29,7 +29,10 @@ function VersionB(props) {
 	        </div>
 	      </div>
 	      <div className="btnGroup-mobile clearfix" style={{backgroundColor:backgroundColorCalc(props.pageData.client.color_scheme_headline) }}>
-	      	<img src={anniversaryIcon} alt="annivesary" />
+		  	{
+			  props.pageData.client.name === "SYSTEMTRANS.COM" &&
+			  <img src={anniversaryIcon} alt="annivesary" />
+			}
 	        <div className="grouBtn-wrap">
 	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} href={'tel:' + props.pageData.landingPage.phone} id="callBtn" className="form-control-btn btn">Call {props.pageData.landingPage.phone}</a>
 	          <a style={{backgroundColor: props.pageData.client.color_scheme_accent}} onClick={toTopScroll} id="quickFormBtn" className="form-control-btn btn">Quick Apply</a>
@@ -40,7 +43,7 @@ function VersionB(props) {
 	          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
 	            <img className="landscape-image-mobile" src={`https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background}`} alt="Background" />
 	            <div className="landscape-wrap">
-	              <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
+	              <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} client={props.pageData.client.name} />
 	              <div id="main-description" className="main-description">
 	                <div className="primary-description">
 	                  <h3 dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_title}}></h3>

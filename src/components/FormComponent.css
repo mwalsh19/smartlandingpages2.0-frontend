@@ -58,10 +58,10 @@
 	margin-top: -15px;
 }
 
-@media(max-width: 500px) {
+@media(max-width: 850px) {
 
 	.leadForm {
-	    width: 96%;
+	    width: 98%;
     	position: unset;
 	    text-align: center;
 		margin-top: 189px;
@@ -84,5 +84,15 @@
 	
 	.g-recaptcha {
 		margin: auto;
+	}
+}
+
+@media(max-width: 500px) {
+
+	.leadForm {
+	    width: 96%;
+    	position: unset;
+	    text-align: center;
+		margin-top: 189px;
 	}
 }

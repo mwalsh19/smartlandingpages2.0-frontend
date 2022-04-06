@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import { retrieveLandingPage } from "./actions/landingpages";
@@ -16,6 +16,7 @@ function App() {
   let navigate = useNavigate();
   const landingPageData = useSelector((state) => state.landingpages);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     dispatch(retrieveLandingPage(path, publisher, version));
@@ -42,7 +43,6 @@ function App() {
 
     // <!-- truckersreport script -->
 		if (publisher && publisher === 'truckersreport') {
-			console.log('trucker');
 			const scriptDataTag = document.createElement('script');
 	  
 			scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
@@ -70,7 +70,7 @@ function App() {
             gaOptions: { name: 'thankyouTracker' }
           }
         ],
-        { debug: true, alwaysSendToDefaultTracker: false }
+        { debug: false, alwaysSendToDefaultTracker: false }
       );
       // landing page generic tracker
       ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
@@ -81,30 +81,49 @@ function App() {
     navigate('/404');
   }
 
+  //setLoading(false);
+
   return (
     <DocumentTitle title={landingPageData?.landingPage?.title || 'Landing Pages'}>
       <div>
         {
-          (landingPageData?.template?.name === 'VersionA' ||
-          landingPageData?.template?.name === 'div227' || 
-          landingPageData?.template?.name === 'div273-div274' || 
-          landingPageData?.template?.name === 'div290' || 
-          landingPageData?.template?.name === 'div290columbus' ||
-          landingPageData?.template?.name === 'div290clevelandarea' ||
-          landingPageData?.template?.name === 'div290omaha' || 
-          landingPageData?.template?.name === 'div290topeka' ||
-          landingPageData?.template?.name === 'div290indianapolis' || 
-          landingPageData?.template?.name === 'div290desmoines' ||
-          landingPageData?.template?.name === 'div290kansascitymo' ||
-          landingPageData?.template?.name === 'div290chicagoarea' ||
-          landingPageData?.template?.name === 'div296') &&
-          <VersionA pageData={landingPageData} landingPageName={path} />
+          isLoading &&
+          <div className="loading-spinner">
+            <div className="lds-roller">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         }
+        <div className={isLoading ? 'hidden' : ''}>
+          {
+            (landingPageData?.template?.name === 'VersionA' ||
+            landingPageData?.template?.name === 'div227' || 
+            landingPageData?.template?.name === 'div273-div274' || 
+            landingPageData?.template?.name === 'div290' || 
+            landingPageData?.template?.name === 'div290columbus' ||
+            landingPageData?.template?.name === 'div290clevelandarea' ||
+            landingPageData?.template?.name === 'div290omaha' || 
+            landingPageData?.template?.name === 'div290topeka' ||
+            landingPageData?.template?.name === 'div290indianapolis' || 
+            landingPageData?.template?.name === 'div290desmoines' ||
+            landingPageData?.template?.name === 'div290kansascitymo' ||
+            landingPageData?.template?.name === 'div290chicagoarea' ||
+            landingPageData?.template?.name === 'div296') &&
+            <VersionA pageData={landingPageData} landingPageName={path} />
+          }
 
-        {
-          landingPageData?.template?.name === 'VersionB' &&
-          <VersionB pageData={landingPageData} landingPageName={path} />
-        }
+          {
+            landingPageData?.template?.name === 'VersionB' &&
+            <VersionB pageData={landingPageData} landingPageName={path} />
+          }
+        </div>
       </div>
     </DocumentTitle>
   )

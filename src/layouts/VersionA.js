@@ -37,7 +37,7 @@ function VersionA(props) {
 	        <div className="top-container-wrap">
 		          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
 		            <div className="landscape-wrap">
-		              <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} />
+		              <FormComponent landingPageName={props.landingPageName} referralCode={props.pageData.landingPage.referral_code} styleColors={props.pageData.client} version={props.pageData.template.name} client={props.pageData.client.name} />
 		              <div id="main-description" className="main-description">
 		                <div className="primary-description">
 		                  <h3 dangerouslySetInnerHTML={{__html: props.pageData.landingPage.main_title}}></h3>
