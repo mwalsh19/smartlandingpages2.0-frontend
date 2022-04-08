@@ -16,7 +16,7 @@
 }
 
 .header {
-  background: url(https://systemtrans.com/landing-pages/vendor/systrans/systrans/images/st-thankyou-hero-gfx.jpg) no-repeat bottom;
+  background: url(../images/st-thankyou-hero-gfx.jpg) no-repeat bottom;
     background-size: auto;
   background-size: cover;
 }
@@ -30,7 +30,7 @@
 }
 
 .header .checked-icon {
-  background: url(https://systemtrans.com/landing-pages/vendor/thankyou2/images/thankyou-green-check.png) no-repeat;
+  background: url(../images/thankyou-green-check.png) no-repeat;
   width: 78px;
   height: 78px;
   margin: 0 auto;
