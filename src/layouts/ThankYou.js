@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 const ThankYou = () => {
 	const location = useLocation();
 	const landingPageData = useSelector((state) => state.landingpages);
-	let { path, publisher, version } = useParams();
+	let { publisher } = useParams();
 	//console.log(landingPageData);
 	window.scrollTo(0,0);
 
@@ -39,6 +39,66 @@ const ThankYou = () => {
 			  document.body.removeChild(scriptDataTag);
 			}
 		}
+		// google conversion
+		if (publisher && publisher === 'google') {
+			const scriptTag = document.createElement('script');
+
+			scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
+			scriptTag.async = true;
+
+			document.body.appendChild(scriptTag);
+
+			const scriptDataTag = document.createElement('script');
+
+			scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+			scriptDataTag.async = true;
+
+			document.body.appendChild(scriptDataTag);
+
+			const scriptInitTag = document.createElement('script');
+
+			scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-1069865639/qZTACO7TuqkBEKe1k_4D'});";
+			scriptInitTag.async = true;
+
+			document.body.appendChild(scriptInitTag);
+
+			return () => {
+				document.body.removeChild(scriptTag);
+				document.body.removeChild(scriptInitTag);
+				document.body.removeChild(scriptDataTag);
+			}
+		}
+
+		// <!-- hiremaster conversion script -->
+		if (publisher && publisher === 'hiremaster') {
+			const scriptTag = document.createElement('script');
+	  
+			scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
+			scriptTag.async = true;
+	  
+			document.body.appendChild(scriptTag);
+			const scriptDataTag = document.createElement('script');
+	  
+			scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
+			scriptDataTag.async = true;
+	  
+			document.body.appendChild(scriptDataTag);
+
+			const scriptInitTag = document.createElement('script');
+
+			scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-318679524/KbRyCO2_nvYCEOTT-pcB'});";
+			scriptInitTag.async = true;
+
+			document.body.appendChild(scriptInitTag);
+
+	  
+			return () => {
+			  document.body.removeChild(scriptTag);
+			  document.body.removeChild(scriptDataTag);
+			  document.body.removeChild(scriptDataTag);
+			}
+		}
+
     }, [location]);
 
 	// facebook pixel
@@ -53,10 +113,6 @@ const ThankYou = () => {
 			label: 'ApplyNow',
 			value: 1
 		}, ['thankyouTracker']);
-	}
-	// hiremaster conversion
-	if (publisher && publisher === 'hiremaster') {
-		ReactGA.ga('event', 'conversion', { 'send_to': 'AW-318679524/KbRyCO2_nvYCEOTT-pcB' });
 	}
 
   return (
@@ -74,7 +130,7 @@ const ThankYou = () => {
 			    </div>
 				{
 					landingPageData.publisher.pixel &&
-					<img className="pixel" src={landingPageData.publisher.pixel} width="1" height="1"/>
+					<img className="pixel" src={landingPageData.publisher.pixel} width="1" height="1" alt="pixel" />
 				}
 			    <div className="header">
 			      <div className="header-wrap">
@@ -112,20 +168,20 @@ const ThankYou = () => {
 			         <div className="social">
 					 	{landingPageData.client.name === 'SYSTEMTRANS.COM' &&
 							<div> 
-								<a href="https://www.facebook.com/SystemTransport/" target="_blank"><img src={fbIconST} alt="facebook" /></a>
-			          			<a href="https://www.instagram.com/system_transport/" target="_blank"><img src={igIconST} alt="instagram" /></a>
+								<a rel="noreferrer" href="https://www.facebook.com/SystemTransport/" target="_blank"><img src={fbIconST} alt="facebook" /></a>
+			          			<a rel="noreferrer" href="https://www.instagram.com/system_transport/" target="_blank"><img src={igIconST} alt="instagram" /></a>
 							</div>
 						}
 						{landingPageData.client.name === 'JJWILLIAMS.COM' &&
 							<div> 
-								<a href="https://www.facebook.com/JamesJWilliamsTankers" target="_blank"><img src={fbIconJJW} alt="facebook" /></a>
-			          			<a href="https://www.instagram.com/james.j.williams/" target="_blank"><img src={igIconJJW} alt="instagram" /></a>
+								<a rel="noreferrer" href="https://www.facebook.com/JamesJWilliamsTankers" target="_blank"><img src={fbIconJJW} alt="facebook" /></a>
+			          			<a rel="noreferrer" href="https://www.instagram.com/james.j.williams/" target="_blank"><img src={igIconJJW} alt="instagram" /></a>
 							</div>
 						}
 						{landingPageData.client.name === 'TWTRANS.COM' &&
 							<div> 
-								<a href="https://www.facebook.com/TWTRefrigerated" target="_blank"><img src={fbIconTWT} alt="facebook" /></a>
-			          			<a href="https://www.instagram.com/twt_refrigerated/" target="_blank"><img src={igIconTWT} alt="instagram" /></a>
+								<a rel="noreferrer" href="https://www.facebook.com/TWTRefrigerated" target="_blank"><img src={fbIconTWT} alt="facebook" /></a>
+			          			<a rel="noreferrer" href="https://www.instagram.com/twt_refrigerated/" target="_blank"><img src={igIconTWT} alt="instagram" /></a>
 							</div>
 						}
 			          </div> 
@@ -143,7 +199,7 @@ const ThankYou = () => {
 			                        *BY COMPLETING THIS FORM, I AGREE TO RECEIVE CORRESPONDENCE FROM {landingPageData.client.name}. THIS INCLUDES RECEIVING TELEPHONE CALLS, PRERECORDED MESSAGES, TEXT MESSAGES AND EMAILS ABOUT TRUCKING JOB OPPORTUNITIES AT THE CONTACT NUMBER AND ADDRESS I HAVE PROVIDED ABOVE. I UNDERSTAND THAT I AM NOT REQUIRED TO PROVIDE MY CONSENT AS A CONDITION OF SUBMITTING MY APPLICATION.
 			                    </p>
 			                    <ul>
-			                        <li><a href={landingPageData.client.website + 'privacy-policy'} target="_blank">Privacy Policy</a><span>|</span></li>
+			                        <li><a rel="noreferrer" href={landingPageData.client.website + 'privacy-policy'} target="_blank">Privacy Policy</a><span>|</span></li>
 			                        <li><a rel="noreferrer" target="blank" href={landingPageData.client.website}>{landingPageData.client.name}</a><span>|</span></li>
 			                        <li><a rel="noreferrer" href={"https://intelliapp.driverapponline.com/c/tsystem?r=" + landingPageData.landingPage.referral_code_intelliapp} target="_blank">Online Application</a></li>
 			                    </ul>

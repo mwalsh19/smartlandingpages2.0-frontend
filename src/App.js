@@ -41,6 +41,27 @@ function App() {
       }
     }
 
+    // <!-- google script -->
+    if (publisher && publisher === 'google') {
+      const scriptTag = document.createElement('script');
+
+      scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
+      scriptTag.async = true;
+
+      document.body.appendChild(scriptTag);
+      const scriptDataTag = document.createElement('script');
+
+      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+      scriptDataTag.async = true;
+
+      document.body.appendChild(scriptDataTag);
+
+      return () => {
+        document.body.removeChild(scriptTag);
+        document.body.removeChild(scriptDataTag);
+      }
+    }
+
     // <!-- truckersreport script -->
 		if (publisher && publisher === 'truckersreport') {
 			const scriptDataTag = document.createElement('script');
