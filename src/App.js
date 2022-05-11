@@ -51,7 +51,8 @@ function App() {
       document.body.appendChild(scriptTag);
       const scriptDataTag = document.createElement('script');
 
-      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+      //scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639/qmu7CJKE5asBEKe1k_4D', {'phone_conversion_number': '866 696-3420'});function gtag_report_conversion(url) {var callback = function () {if (typeof(url) != 'undefined') {window.location = url;}};gtag('event', 'conversion', {'send_to': 'AW-1069865639/gJfhCIW776sBEKe1k_4D','event_callback': callback});return false;}";
       scriptDataTag.async = true;
 
       document.body.appendChild(scriptDataTag);
