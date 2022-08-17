@@ -18,102 +18,111 @@ const ThankYou = () => {
 	const location = useLocation();
 	const landingPageData = useSelector((state) => state.landingpages);
 	let { publisher } = useParams();
+	// get the param to see if this is a preview
+  const queryParams = new URLSearchParams(window.location.search);
+	const preview = queryParams.get('preview') ? queryParams.get('preview') : false;
 	//console.log(landingPageData);
 	window.scrollTo(0,0);
 
 	useEffect(() => {
-       // thank you page generic tracker
-	   if (landingPageData?.landingPage?.ga_tp) {
-			ReactGA.ga('thankyouTracker.send', 'pageview', {'page': window.location.pathname + window.location.search });
-		}
-		// <!-- truckersreport script -->
-		if (publisher && publisher === 'truckersreport') {
-			const scriptDataTag = document.createElement('script');
-	  
-			scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
-			scriptDataTag.async = true;
-	  
-			document.body.appendChild(scriptDataTag);
-	  
-			return () => {
-			  document.body.removeChild(scriptDataTag);
+		if (!preview) {
+      // thank you page generic tracker
+			if (landingPageData?.landingPage?.ga_tp) {
+				ReactGA.ga('thankyouTracker.send', 'pageview', {'page': window.location.pathname + window.location.search });
+			}
+			// <!-- truckersreport script -->
+			if (publisher && publisher === 'truckersreport') {
+				const scriptDataTag = document.createElement('script');
+			
+				scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
+				scriptDataTag.async = true;
+			
+				document.body.appendChild(scriptDataTag);
+			
+				return () => {
+					document.body.removeChild(scriptDataTag);
+				}
+			}
+			// google conversion
+			if (publisher && publisher === 'google') {
+				const scriptTag = document.createElement('script');
+
+				scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
+				scriptTag.async = true;
+
+				document.body.appendChild(scriptTag);
+
+				const scriptDataTag = document.createElement('script');
+
+				scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+				scriptDataTag.async = true;
+
+				document.body.appendChild(scriptDataTag);
+
+				const scriptInitTag = document.createElement('script');
+
+				scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-1069865639/qZTACO7TuqkBEKe1k_4D'});";
+				scriptInitTag.async = true;
+
+				document.body.appendChild(scriptInitTag);
+
+				return () => {
+					document.body.removeChild(scriptTag);
+					document.body.removeChild(scriptInitTag);
+					document.body.removeChild(scriptDataTag);
+				}
+			}
+
+			// <!-- hiremaster conversion script -->
+			if (publisher && publisher === 'hiremaster') {
+				const scriptTag = document.createElement('script');
+			
+				scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
+				scriptTag.async = true;
+			
+				document.body.appendChild(scriptTag);
+				const scriptDataTag = document.createElement('script');
+			
+				scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
+				scriptDataTag.async = true;
+			
+				document.body.appendChild(scriptDataTag);
+
+				const scriptInitTag = document.createElement('script');
+
+				scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-318679524/KbRyCO2_nvYCEOTT-pcB'});";
+				scriptInitTag.async = true;
+
+				document.body.appendChild(scriptInitTag);
+
+			
+				return () => {
+					document.body.removeChild(scriptTag);
+					document.body.removeChild(scriptDataTag);
+					document.body.removeChild(scriptDataTag);
+				}
 			}
 		}
-		// google conversion
-		if (publisher && publisher === 'google') {
-			const scriptTag = document.createElement('script');
 
-			scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
-			scriptTag.async = true;
+  }, [location]);
 
-			document.body.appendChild(scriptTag);
-
-			const scriptDataTag = document.createElement('script');
-
-			scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
-			scriptDataTag.async = true;
-
-			document.body.appendChild(scriptDataTag);
-
-			const scriptInitTag = document.createElement('script');
-
-			scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-1069865639/qZTACO7TuqkBEKe1k_4D'});";
-			scriptInitTag.async = true;
-
-			document.body.appendChild(scriptInitTag);
-
-			return () => {
-				document.body.removeChild(scriptTag);
-				document.body.removeChild(scriptInitTag);
-				document.body.removeChild(scriptDataTag);
-			}
-		}
-
-		// <!-- hiremaster conversion script -->
-		if (publisher && publisher === 'hiremaster') {
-			const scriptTag = document.createElement('script');
-	  
-			scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
-			scriptTag.async = true;
-	  
-			document.body.appendChild(scriptTag);
-			const scriptDataTag = document.createElement('script');
-	  
-			scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
-			scriptDataTag.async = true;
-	  
-			document.body.appendChild(scriptDataTag);
-
-			const scriptInitTag = document.createElement('script');
-
-			scriptInitTag.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-318679524/KbRyCO2_nvYCEOTT-pcB'});";
-			scriptInitTag.async = true;
-
-			document.body.appendChild(scriptInitTag);
-
-	  
-			return () => {
-			  document.body.removeChild(scriptTag);
-			  document.body.removeChild(scriptDataTag);
-			  document.body.removeChild(scriptDataTag);
-			}
-		}
-
-    }, [location]);
-
-	// facebook pixel
-	ReactPixel.init('824397174323085');
-	ReactPixel.pageView(); // For tracking page view
+	if (!preview) {
+		// facebook pixel
+		ReactPixel.init('824397174323085');
+		ReactPixel.pageView(); // For tracking page view
+	}
 
 	// apply now tracking click event
 	const handleApplyNowEvent = () => {
+		ReactGA.initialize(landingPageData?.landingPage?.ga_tp, {debug: true});
 		ReactGA.event({
 			category: 'ThankYouPage',
 			action: 'Click',
 			label: 'ApplyNow',
 			value: 1
-		}, ['thankyouTracker']);
+		},/* ['thankyouTracker']*/);
 	}
+	
 
   return (
   	<DocumentTitle title={'Thank You'}>

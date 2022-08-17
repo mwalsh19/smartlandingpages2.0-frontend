@@ -13,6 +13,9 @@ import ReactGA from 'react-ga';
 function App() {
 
   let { path, publisher, version } = useParams();
+  // get the param to see if this is a preview
+  const queryParams = new URLSearchParams(window.location.search);
+  const preview = queryParams.get('preview') ? queryParams.get('preview') : false;
   let navigate = useNavigate();
   const landingPageData = useSelector((state) => state.landingpages);
   const dispatch = useDispatch();
@@ -20,82 +23,89 @@ function App() {
 
   useEffect(() => {
     dispatch(retrieveLandingPage(path, publisher, version));
-    // <!-- hiremaster conversion init script -->
-    if (publisher && publisher === 'hiremaster') {
-      const scriptTag = document.createElement('script');
+    if (!preview) {
+      // <!-- hiremaster conversion init script -->
+      if (publisher && publisher === 'hiremaster') {
+        const scriptTag = document.createElement('script');
 
-      scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
-      scriptTag.async = true;
+        scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-318679524";
+        scriptTag.async = true;
 
-      document.body.appendChild(scriptTag);
-      const scriptDataTag = document.createElement('script');
+        document.body.appendChild(scriptTag);
+        const scriptDataTag = document.createElement('script');
 
-      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
-      scriptDataTag.async = true;
+        scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-318679524');";
+        scriptDataTag.async = true;
 
-      document.body.appendChild(scriptDataTag);
+        document.body.appendChild(scriptDataTag);
 
-      return () => {
-        document.body.removeChild(scriptTag);
-        document.body.removeChild(scriptDataTag);
+        return () => {
+          document.body.removeChild(scriptTag);
+          document.body.removeChild(scriptDataTag);
+        }
+      }
+
+      // <!-- google script -->
+      if (publisher && publisher === 'google') {
+        const scriptTag = document.createElement('script');
+
+        scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
+        scriptTag.async = true;
+
+        document.body.appendChild(scriptTag);
+        const scriptDataTag = document.createElement('script');
+
+        //scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
+        scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639/qmu7CJKE5asBEKe1k_4D', {'phone_conversion_number': '866 696-3420'});function gtag_report_conversion(url) {var callback = function () {if (typeof(url) != 'undefined') {window.location = url;}};gtag('event', 'conversion', {'send_to': 'AW-1069865639/gJfhCIW776sBEKe1k_4D','event_callback': callback});return false;}";
+        scriptDataTag.async = true;
+
+        document.body.appendChild(scriptDataTag);
+
+        return () => {
+          document.body.removeChild(scriptTag);
+          document.body.removeChild(scriptDataTag);
+        }
+      }
+
+      // <!-- truckersreport script -->
+      if (publisher && publisher === 'truckersreport') {
+        const scriptDataTag = document.createElement('script');
+      
+        scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
+        scriptDataTag.async = true;
+      
+        document.body.appendChild(scriptDataTag);
+      
+        return () => {
+          document.body.removeChild(scriptDataTag);
+        }
       }
     }
-
-    // <!-- google script -->
-    if (publisher && publisher === 'google') {
-      const scriptTag = document.createElement('script');
-
-      scriptTag.src = "https://www.googletagmanager.com/gtag/js?id=AW-1069865639";
-      scriptTag.async = true;
-
-      document.body.appendChild(scriptTag);
-      const scriptDataTag = document.createElement('script');
-
-      //scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639');";
-      scriptDataTag.innerHTML = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-1069865639/qmu7CJKE5asBEKe1k_4D', {'phone_conversion_number': '866 696-3420'});function gtag_report_conversion(url) {var callback = function () {if (typeof(url) != 'undefined') {window.location = url;}};gtag('event', 'conversion', {'send_to': 'AW-1069865639/gJfhCIW776sBEKe1k_4D','event_callback': callback});return false;}";
-      scriptDataTag.async = true;
-
-      document.body.appendChild(scriptDataTag);
-
-      return () => {
-        document.body.removeChild(scriptTag);
-        document.body.removeChild(scriptDataTag);
-      }
-    }
-
-    // <!-- truckersreport script -->
-		if (publisher && publisher === 'truckersreport') {
-			const scriptDataTag = document.createElement('script');
-	  
-			scriptDataTag.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSRHSMN');";
-			scriptDataTag.async = true;
-	  
-			document.body.appendChild(scriptDataTag);
-	  
-			return () => {
-			  document.body.removeChild(scriptDataTag);
-			}
-		}
   }, []);
 
   useEffect(() => {
-    if (landingPageData?.landingPage?.ga_lp) {
-      // initialize trackers from the backend
-      ReactGA.initialize( 
-        [
-          {
-            trackingId: landingPageData?.landingPage?.ga_lp,
-            gaOptions: { name: 'landingPageTracker' }
-          },
-          {
-            trackingId: landingPageData?.landingPage?.ga_tp,
-            gaOptions: { name: 'thankyouTracker' }
-          }
-        ],
-        { debug: false, alwaysSendToDefaultTracker: false }
-      );
-      // landing page generic tracker
-      ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+
+    if (!preview) {
+      if (landingPageData?.landingPage?.ga_lp) {
+        console.log('load these');
+        console.log(landingPageData?.landingPage?.ga_lp);
+        // initialize trackers from the backend
+        ReactGA.initialize( 
+          [
+            {
+              trackingId: landingPageData?.landingPage?.ga_lp,
+              gaOptions: { name: 'landingPageTracker' }
+            },
+            {
+              trackingId: landingPageData?.landingPage?.ga_tp,
+              gaOptions: { name: 'thankyouTracker' }
+            }
+          ],
+          { debug: false, alwaysSendToDefaultTracker: false }
+        );
+        // landing page generic tracker
+        ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+      }
     }
   }, [landingPageData]);
 
@@ -138,12 +148,12 @@ function App() {
             landingPageData?.template?.name === 'div290kansascitymo' ||
             landingPageData?.template?.name === 'div290chicagoarea' ||
             landingPageData?.template?.name === 'div296') &&
-            <VersionA pageData={landingPageData} landingPageName={path} />
+            <VersionA pageData={landingPageData} landingPageName={path} isPreview={preview} />
           }
 
           {
             landingPageData?.template?.name === 'VersionB' &&
-            <VersionB pageData={landingPageData} landingPageName={path} />
+            <VersionB pageData={landingPageData} landingPageName={path} isPreview={preview} />
           }
         </div>
       </div>

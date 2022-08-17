@@ -8,6 +8,7 @@ import './FormComponent.css';
 import Form from 'react-bootstrap/Form';
 import Reaptcha from 'reaptcha';
 import InputMask from "react-input-mask";
+import ReactGA from 'react-ga';
 
 const FormComponent = (props) => {
 
@@ -22,7 +23,8 @@ const FormComponent = (props) => {
 		zip: "",
 		experience: "",
 		cdl: "",
-		referral_code: props.referralCode
+		referral_code: props.referralCode,
+		customer: process.env.REACT_APP_CUSTOMER,
 	});
 
 	const [ formData, setForm ] = React.useState(initialFormData)
@@ -33,7 +35,7 @@ const FormComponent = (props) => {
 
 	const handleSubmit = (e) => {
 	    e.preventDefault()
-	    // console.log(formData);
+	    //console.log(formData);
 
 	    const newErrors = findFormErrors()
 
@@ -42,7 +44,24 @@ const FormComponent = (props) => {
 	      setErrors(newErrors)
 	    } else {
 	      dispatch(createApplicantData(formData));
-	      navigate(
+
+				if (props.isPreview) {
+					return navigate(
+						'thank-you?preview=true',
+					{ state: formData }
+				);
+				} 
+				// SUBMIT EVENT
+				//console.log(props.gaTag);
+				/*ReactGA.initialize(props.gaTag, { debug: true });
+				ReactGA.event({
+					category: 'ThankYouPage',
+					action: 'Click',
+					label: 'ApplyNow',
+					value: 1
+				});*/
+
+	      return navigate(
 		    	'thank-you',
 				{ state: formData }
 			);
@@ -298,7 +317,7 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 			  <div className="g-recaptcha-div">
-			  	<Reaptcha sitekey="6LeBj8kaAAAAAK7kjxp5a8oHl2KTU4mIrFezWt_v" onVerify={onVerify} theme='dark' />
+			  	<Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} theme='dark' />
 			  </div>
 		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit} style={{ background: props.styleColors.color_scheme_accent }}>Submit Application</button>
 		   </form>
