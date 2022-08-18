@@ -53,13 +53,13 @@ const FormComponent = (props) => {
 				} 
 				// SUBMIT EVENT
 				//console.log(props.gaTag);
-				/*ReactGA.initialize(props.gaTag, { debug: true });
+				ReactGA.initialize(props.gaTag, { debug: false });
 				ReactGA.event({
-					category: 'ThankYouPage',
+					category: 'FindJobs',
 					action: 'Click',
 					label: 'ApplyNow',
 					value: 1
-				});*/
+				});
 
 	      return navigate(
 		    	'thank-you',

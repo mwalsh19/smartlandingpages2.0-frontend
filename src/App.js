@@ -87,8 +87,6 @@ function App() {
 
     if (!preview) {
       if (landingPageData?.landingPage?.ga_lp) {
-        console.log('load these');
-        console.log(landingPageData?.landingPage?.ga_lp);
         // initialize trackers from the backend
         ReactGA.initialize( 
           [
