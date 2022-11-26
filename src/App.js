@@ -6,9 +6,11 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import VersionA from './layouts/VersionA';
 import VersionB from './layouts/VersionB';
+import VersionC from './layouts/VersionC';
 import DocumentTitle from 'react-document-title';
 import { useNavigate } from 'react-router-dom';
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
 
 function App() {
 
@@ -102,7 +104,10 @@ function App() {
           { debug: false, alwaysSendToDefaultTracker: false }
         );
         // landing page generic tracker
-        ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+        //ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+        //ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
+        ReactGA.initialize(landingPageData?.landingPage?.ga_lp);
+        ReactGA.send("pageview");
       }
     }
   }, [landingPageData]);
@@ -152,6 +157,11 @@ function App() {
           {
             landingPageData?.template?.name === 'VersionB' &&
             <VersionB pageData={landingPageData} landingPageName={path} isPreview={preview} />
+          }
+
+          {
+            landingPageData?.template?.name === 'VersionC' &&
+            <VersionC pageData={landingPageData} landingPageName={path} isPreview={preview} />
           }
         </div>
       </div>

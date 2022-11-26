@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Reaptcha from 'reaptcha';
 import InputMask from "react-input-mask";
 import ReactGA from 'react-ga';
+import reactDocumentTitle from 'react-document-title';
 
 const FormComponent = (props) => {
 
@@ -119,7 +120,18 @@ const FormComponent = (props) => {
   return (
     
 
-		<div className="leadForm" style={{ background: props.styleColors.color_scheme_headline }}>
+		<div className="leadForm" style={{ background: props.version === 'VersionC' ? 'white' : props.styleColors.color_scheme_headline }}>
+		{
+			props.version === 'VersionC' &&
+				<div className={props.client === 'JJWILLIAMS.COM' ? 'sub-heading-phone sub-heading-phone-jjw' : props.client === 'SYSTEMTRANS.COM' ? 'sub-heading-phone sub-heading-phone-sys' : 'sub-heading-phone sub-heading-phone-twt'} style={{backgroundColor: props.client === 'JJWILLIAMS.COM' ? props.styleColors.color_scheme_headline : props.styleColors.color_scheme_accent }}>
+					<div className="versionC-hidden">
+						<span>Call now to speak with a recruiter</span>
+						<h1>{props.phone}</h1>
+					</div>
+					<h2 className="caps" id="quickForm">Get Started Today.</h2>
+					<p>Quick 1 Minute Application.</p>
+				</div>
+		}
 		{
 			(props.version === 'VersionA' ||
 			props.version === 'div227' || 
@@ -150,9 +162,9 @@ const FormComponent = (props) => {
 				<h2 className="caps">Apply Today.</h2>
 			</div>
 		}
-		   <form>
-		      <div className={ props.version === 'VersionA' ? 'form-row': ''}>
-		         <div className={ props.version === 'VersionA' ? 'col': 'form-group'}>
+		   <form style={{padding: props.version === 'VersionC' ? '10px' : ''}}>
+		      <div className={ (props.version === 'VersionA' || props.version === 'VersionC')  ? 'form-row': ''}>
+		         <div className={ (props.version === 'VersionA' || props.version === 'VersionC') ? 'col': 'form-group'}>
 		         	<Form.Control 
 		         		type='text' 
 		         		onChange={ e => setField('first_name', e.target.value) }
@@ -164,7 +176,7 @@ const FormComponent = (props) => {
 				        { errors.first_name }
 				    </Form.Control.Feedback>
 		         </div>
-		         <div className={ props.version === 'VersionA' ? 'col': 'form-group'}>
+		         <div className={ (props.version === 'VersionA' || props.version === 'VersionC') ? 'col': 'form-group'}>
 		            <Form.Control 
 		         		type='text' 
 		         		onChange={ e => setField('last_name', e.target.value) }
@@ -317,9 +329,9 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 			  <div className="g-recaptcha-div">
-			  	<Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} theme='dark' />
+			  	<Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} theme={props.version !== 'VersionC' ? 'dark' : 'light'} />
 			  </div>
-		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit} style={{ background: props.styleColors.color_scheme_accent }}>Submit Application</button>
+		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit} style={{ background: props.client === 'JJWILLIAMS.COM' ? props.styleColors.color_scheme_headline : props.styleColors.color_scheme_accent }}>{props.version === 'VersionC' ? 'Apply Now' :  'Submit Application'}</button>
 		   </form>
 		</div>
   );

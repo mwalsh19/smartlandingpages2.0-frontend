@@ -27,6 +27,73 @@
 	color: white;
 }
 
+.versionC .leadForm {
+	z-index: 21;
+	top: 0;
+	padding: 0;
+}
+
+.versionC .leadForm h1,
+.versionC .leadForm h2,
+.versionC .leadForm span {
+	color: white;
+}
+
+.versionC .leadForm span {
+	color: rgb(245,166,10);
+	font-family: helvetica;
+	font-weight: bold;
+}
+
+.versionC .leadForm .sub-heading-phone {
+	position:relative;
+	margin-bottom: 1em;
+	padding: 0.5em;
+}
+
+.versionC .leadForm p {
+	text-align: center;
+	font-family: helvetica;
+}
+
+.versionC .leadForm .sub-heading-phone-twt:after {
+	content:'';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -30px;
+	width: 0;
+	height: 0;
+	border-top: solid 20px rgb(236, 159, 35);
+	border-left: solid 30px transparent;
+	border-right: solid 30px transparent;
+}
+.versionC .leadForm .sub-heading-phone-jjw:after {
+	content:'';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -30px;
+	width: 0;
+	height: 0;
+	border-top: solid 20px #005844;
+	border-left: solid 30px transparent;
+	border-right: solid 30px transparent;
+}
+
+.versionC .leadForm .sub-heading-phone-sys:after {
+	content:'';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -30px;
+	width: 0;
+	height: 0;
+	border-top: solid 20px  rgb(215, 30, 38);
+	border-left: solid 30px transparent;
+	border-right: solid 30px transparent;
+}
+
 .formImage {
 	width: 100%;
 }
@@ -43,6 +110,11 @@
 .submit-button:hover, .submit-button:focus, .submit-button:active, .submit-button:visited {
 	background: none;
 	outline: 0;
+}
+
+.versionC .invalid-feedback {
+	color: black;
+	text-align: left;
 }
 
 .invalid-feedback {
@@ -73,6 +145,21 @@
 	    text-align: center;
 	    margin-top: 0;
 	}
+
+	.versionC .leadForm {
+		width: 100%;
+		position: unset;
+		text-align: center;
+		margin-top: 189px;
+}
+
+.versionC .submit-button {
+	width: 100%;
+}
+
+.versionC-hidden {
+	display: none;
+}
 
 	.formImage {
 		display: none;
