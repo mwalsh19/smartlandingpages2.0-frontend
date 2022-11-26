@@ -35,7 +35,13 @@ function VersionA(props) {
 	      </div>
 	      <div className="top-container">
 	        <div className="top-container-wrap">
-		          <div className="landscape-container" style={{background: `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`}}>
+		          <div className={window.innerWidth <= 850 && props.pageData.landingPage.background_mobile ? 'landscape-container landscape-container-mobile' : 'landscape-container'}
+								style={
+									{
+										background: window.innerWidth <= 850 && props.pageData.landingPage.background_mobile ? `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background_mobile})` : `url(https://smartlandingpages.lacedagency.com/uploads/${props.landingPageName}/${props.pageData.landingPage.background})`
+									}
+								}
+								>
 		            <div className="landscape-wrap">
 		              <FormComponent 
 										isPreview={props.isPreview} 
@@ -88,9 +94,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef1_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef1_caption}
-	          </p>
+						<p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef1_caption}}></p>
 	        </div>
 	      </div>
 	      <div className="icons col-3 item2 inline-block center">
@@ -101,9 +105,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef2_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef2_caption}
-	          </p>
+	          <p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef2_caption}}></p>
 	        </div>
 	      </div>
 	      <div className="icons col-3 item3 inline-block center">
@@ -114,9 +116,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef3_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef3_caption}
-	          </p>
+	          <p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef3_caption}}></p>
 	        </div>
 	      </div>
 	      <div className="icons col-3 item4 inline-block center">
@@ -127,9 +127,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef4_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef4_caption}
-	          </p>
+	          <p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef4_caption}}></p>
 	        </div>
 	      </div>
 	      <div className="icons col-3 item5 inline-block center">
@@ -140,9 +138,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef5_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef5_caption}
-	          </p>
+	          <p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef5_caption}}></p>
 	        </div>
 	      </div>
 	      <div className="icons col-3 item6 inline-block center">
@@ -153,9 +149,7 @@ function VersionA(props) {
 	          <h3>
 	            {props.pageData.landingPage.benef6_caption_title}
 	          </h3>
-	          <p>
-	            {props.pageData.landingPage.benef6_caption}
-	          </p>
+	          <p dangerouslySetInnerHTML={{__html: props.pageData.landingPage.benef6_caption}}></p>
 	        </div>
 	      </div>
 	    </div>

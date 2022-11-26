@@ -439,6 +439,13 @@
 	    min-height: 300px;
 	}
 
+  .versionB .landscape-container-mobile {
+		min-height: 1115px;
+		background-repeat: no-repeat !important;
+		background-position: 0 735px !important;
+    background-size: 100% !important;
+	}
+
 	.versionB .landscape-image-mobile {
 	    max-width: 100%;
 	    display: block;

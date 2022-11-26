@@ -414,6 +414,13 @@
 	    min-height: 300px;
 	}
 
+	.versionA .landscape-container-mobile {
+		min-height: 1115px;
+		background-repeat: no-repeat !important;
+		background-position: 0 735px !important;
+    background-size: 100% !important;
+	}
+
 	.col {
 		padding-right: 0;
     	padding-left: 0;
