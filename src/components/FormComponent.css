@@ -2,6 +2,10 @@
 	text-transform: uppercase;
 }
 
+.sms-checkbox-label {
+	font-size: 14px;
+}
+
 .leadForm *, ::after, ::before {
     box-sizing: border-box;
 }
@@ -25,6 +29,22 @@
 .leadForm p {
 	text-align: left;
 	color: white;
+}
+
+.leadForm .legalText {
+	color: black;
+	font-size: 10px;
+	padding:4px;
+	text-align: left;
+}
+
+.leadForm .legalText a {
+	color: black;
+	text-decoration: underline;
+}
+
+.versionC .leadForm .legalText {
+	text-align: left;
 }
 
 .versionC .leadForm {
@@ -105,6 +125,7 @@
     text-transform: uppercase;
 	border: 0;
 	margin-top: 10px;
+	width: 100%;
 }
 
 .submit-button:hover, .submit-button:focus, .submit-button:active, .submit-button:visited {

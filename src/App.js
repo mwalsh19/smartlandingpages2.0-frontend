@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import { retrieveLandingPage } from "./actions/landingpages";
@@ -11,6 +11,7 @@ import DocumentTitle from 'react-document-title';
 import { useNavigate } from 'react-router-dom';
 //import ReactGA from 'react-ga';
 import ReactGA from "react-ga4";
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
   let navigate = useNavigate();
   const landingPageData = useSelector((state) => state.landingpages);
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = false;
 
   useEffect(() => {
     dispatch(retrieveLandingPage(path, publisher, version));
@@ -86,28 +87,34 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (landingPageData.landingPage) {
+      if (!preview) {
+        if (landingPageData?.landingPage?.ga_lp) {
+          // initialize trackers from the backend
+          let trackingArray = [];
 
-    if (!preview) {
-      if (landingPageData?.landingPage?.ga_lp) {
-        // initialize trackers from the backend
-        ReactGA.initialize( 
-          [
-            {
-              trackingId: landingPageData?.landingPage?.ga_lp,
-              gaOptions: { name: 'landingPageTracker' }
-            },
-            {
-              trackingId: landingPageData?.landingPage?.ga_tp,
-              gaOptions: { name: 'thankyouTracker' }
+          if (landingPageData?.landingPage?.ga_lp) {
+            trackingArray.push({trackingId: landingPageData?.landingPage?.ga_lp, gaOptions: { name: 'landingPageTracker' }});
+          }
+
+          if (landingPageData?.landingPage?.ga_tp) {
+            trackingArray.push({trackingId: landingPageData?.landingPage?.ga_tp, gaOptions: { name: 'thankyouTracker' }});
+          }
+
+          if (landingPageData?.publisher) {
+            if (landingPageData?.publisher.publisher_landing_tracking_code) {
+              trackingArray.push({trackingId: landingPageData?.publisher?.publisher_landing_tracking_code, gaOptions: { name: 'publishLandingPageTracker' }});
             }
-          ],
-          { debug: false, alwaysSendToDefaultTracker: false }
-        );
-        // landing page generic tracker
-        //ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
-        //ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
-        ReactGA.initialize(landingPageData?.landingPage?.ga_lp);
-        ReactGA.send("pageview");
+            if (landingPageData?.publisher.publisher_thank_you_tracking_code) {
+              trackingArray.push({trackingId: landingPageData?.publisher?.publisher_thank_you_tracking_code, gaOptions: { name: 'publisherThankyouTracker' }});
+            }
+          }
+          // landing page generic tracker
+          //ReactGA.pageview(window.location.pathname + window.location.search, ['landingPageTracker']);
+          //ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
+          ReactGA.initialize(trackingArray);
+          ReactGA.send("pageview");
+        }
       }
     }
   }, [landingPageData]);
@@ -164,6 +171,28 @@ function App() {
             <VersionC pageData={landingPageData} landingPageName={path} isPreview={preview} />
           }
         </div>
+        <ScrollToTop 
+          smooth
+          className="scroll-quick-apply" 
+          style={
+            {
+              background: landingPageData?.client?.name === 'JJWILLIAMS.COM' ? landingPageData?.client?.color_scheme_headline : landingPageData?.client?.color_scheme_accent,
+              color: '#FFFFFF',
+              width: '200px',
+              height: '50px',
+              borderRadius: '.25rem .25rem 0 0',
+              bottom: 0,
+              right: 40,
+              fontSize: '20px',
+              fontFamily: 'helvetica',
+              fontWeight: 'bold'
+            }
+          }
+          component={
+            <div>
+              QUICK APPLY
+            </div>
+          } />
       </div>
     </DocumentTitle>
   )

@@ -11,7 +11,8 @@ import igIconST from '../images/ig-icon-st.png';
 import igIconJJW from '../images/ig-icon-jjw.png';
 import igIconTWT from '../images/ig-icon-twt.png';
 import ReactPixel from 'react-facebook-pixel';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
 import { useParams } from "react-router-dom";
 
 const ThankYou = () => {
@@ -29,6 +30,10 @@ const ThankYou = () => {
       // thank you page generic tracker
 			if (landingPageData?.landingPage?.ga_tp) {
 				ReactGA.ga('thankyouTracker.send', 'pageview', {'page': window.location.pathname + window.location.search });
+			}
+
+			if (landingPageData?.publisher?.publisher_thank_you_tracking_code) {
+				ReactGA.ga('publisherThankyouTracker.send', 'pageview', {'page': window.location.pathname + window.location.search });
 			}
 			// <!-- truckersreport script -->
 			if (publisher && publisher === 'truckersreport') {
@@ -114,7 +119,8 @@ const ThankYou = () => {
 
 	// apply now tracking click event
 	const handleApplyNowEvent = () => {
-		ReactGA.initialize(landingPageData?.landingPage?.ga_tp, {debug: true});
+		// ReactGA.initialize(landingPageData?.landingPage?.ga_tp, {debug: true});
+		ReactGA.initialize(landingPageData?.landingPage?.ga_tp);
 		ReactGA.event({
 			category: 'ThankYouPage',
 			action: 'Click',
@@ -147,7 +153,8 @@ const ThankYou = () => {
 			        <div className="header-copy">
 			          <h1>Thanks {location.state.first_name}!</h1>
 			          <p>A recruiter will be contacting you soon.<br />
-			            Click below if you would like to complete our full online application.</p>
+									In a hurry? Speed up the process by completing your full application online now!
+								</p>
 			          <a 
 					  	target="_blank" 
 						rel="noreferrer" 
@@ -155,7 +162,7 @@ const ThankYou = () => {
 						id="applyNowBtn" 
 						className="form-control-btn btn"
 						onClick={handleApplyNowEvent}
-						style={{backgroundColor: landingPageData?.client.color_scheme_accent}}>Apply Now</a>
+						style={{backgroundColor: landingPageData?.client.color_scheme_accent}}>COMPLETE THE FULL APPLICATION NOW!</a>
 			        </div>
 			      </div>
 			    </div>

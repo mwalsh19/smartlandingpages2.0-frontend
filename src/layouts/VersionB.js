@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './VersionB.css';
 import anniversaryIcon from '../images/50th-logo-icon.png';
@@ -187,7 +188,7 @@ function VersionB(props) {
 	          *BY COMPLETING THIS FORM, I AGREE TO RECEIVE CORRESPONDENCE FROM {props.pageData.client.name}. THIS INCLUDES RECEIVING TELEPHONE CALLS, PRERECORDED MESSAGES, TEXT MESSAGES AND EMAILS ABOUT TRUCKING JOB OPPORTUNITIES AT THE CONTACT NUMBER AND ADDRESS I HAVE PROVIDED ABOVE. I UNDERSTAND THAT I AM NOT REQUIRED TO PROVIDE MY CONSENT AS A CONDITION OF SUBMITTING MY APPLICATION.
 	        </p>
 	        <ul>
-	          <li><a href={props.pageData.client.website + 'privacy-policy'} target="_blank">Privacy Policy</a><span>|</span></li>
+	          <li><a href={props.pageData.client.website + 'privacy-policy'} target="_blank" rel="noreferrer">Privacy Policy</a><span>|</span></li>
 	          <li><a rel="noreferrer" target="blank" href={props.pageData.client.website}>{props.pageData.client.name}</a><span>|</span></li>
 	          <li><a href={"https://intelliapp2.driverapponline.com/c/tsystem?r=" + props.pageData.landingPage.referral_code_intelliapp} target="_blank" rel="noreferrer">Online Application</a></li>
 	        </ul>

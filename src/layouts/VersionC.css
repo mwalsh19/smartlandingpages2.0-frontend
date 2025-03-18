@@ -684,4 +684,13 @@
 	.versionC .landscape-container {
     min-height: 1075px;
 	}
+	.middle-container {
+		padding-top: 3em;
+	}
+}
+
+@media(max-width: 415px) {
+	.middle-container {
+		padding-top: 6em;
+	}
 }

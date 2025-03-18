@@ -8,8 +8,8 @@ import './FormComponent.css';
 import Form from 'react-bootstrap/Form';
 import Reaptcha from 'reaptcha';
 import InputMask from "react-input-mask";
-import ReactGA from 'react-ga';
-import reactDocumentTitle from 'react-document-title';
+// import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
 
 const FormComponent = (props) => {
 
@@ -26,6 +26,7 @@ const FormComponent = (props) => {
 		cdl: "",
 		referral_code: props.referralCode,
 		customer: process.env.REACT_APP_CUSTOMER,
+		sms: 0,
 	});
 
 	const [ formData, setForm ] = React.useState(initialFormData)
@@ -51,10 +52,11 @@ const FormComponent = (props) => {
 						'thank-you?preview=true',
 					{ state: formData }
 				);
-				} 
+				}
 				// SUBMIT EVENT
-				//console.log(props.gaTag);
-				ReactGA.initialize(props.gaTag, { debug: false });
+				// console.log(props.gaTag);
+				// ReactGA.initialize(props.gaTag, { debug: false });
+				ReactGA.initialize(props.gaTag);
 				ReactGA.event({
 					category: 'FindJobs',
 					action: 'Click',
@@ -99,8 +101,8 @@ const FormComponent = (props) => {
 	    if ( !first_name || first_name === '' || first_name.length > 20 ) newErrors.first_name = 'This is required.';
 	    if ( !last_name || last_name === '' || last_name.length > 20 ) newErrors.last_name = 'This is required.';
 
-	    if ( !email || email === '' || !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) newErrors.email = 'This is required.';
-	    if ( !phone_number || phone_number === '' ) newErrors.phone_number = 'This is required.';
+	    if ( !email || email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) newErrors.email = 'This is required.';
+	    if ( !phone_number || phone_number === '' || phone_number.match(/\d/g).length !== 11 ) newErrors.phone_number = 'This is required.';
 	    if ( !address || address === '' ) newErrors.address = 'This is required.';
 	    if ( !city || city === '' ) newErrors.city = 'This is required.';
 	    if ( !zip || zip === '' || !/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip) ) newErrors.zip = 'This is required.';
@@ -201,18 +203,21 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 		      <div className="form-group">
-				  {/* Causing console errors */}
 					<InputMask
-						className="form-control"
+						className={`form-control ${errors.phone_number ? 'form-control is-invalid' : ''}`}
 						onChange={ e => setField('phone_number', e.target.value) }
-						isInvalid={ !!errors.phone_number }
 						placeholder="Phone"
 						mask="+1\(999) 999-9999"
 						maskChar=" "
 					/>
-		         	<Form.Control.Feedback type='invalid'>
-				        { errors.phone_number }
-				    </Form.Control.Feedback>
+
+					{ 
+						errors.phone_number &&
+						<div className="invalid-feedback" style={{display: 'block'}}>
+						{ errors.phone_number }
+						</div>
+					}
+
 		      </div>
 		      <div className="form-group">
 		         <Form.Control 
@@ -328,10 +333,24 @@ const FormComponent = (props) => {
 				        { errors.cdl }
 				    </Form.Control.Feedback>
 		      </div>
+					<div className="form-group">
+					<Form.Check 
+						onChange={ e => setField('sms', e.target.value === 'on' ? 1 : 0) }
+						type="checkbox" 
+						label="I want to receive SMS Messages from Trans-System." 
+						id="sms-checkbox"
+						className="sms-checkbox-label"
+					/>
+		      </div>
 			  <div className="g-recaptcha-div">
 			  	<Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} theme={props.version !== 'VersionC' ? 'dark' : 'light'} />
 			  </div>
 		      <button type="button" className="btn submit-button caps" disabled={!verified} onClick={handleSubmit} style={{ background: props.client === 'JJWILLIAMS.COM' ? props.styleColors.color_scheme_headline : props.styleColors.color_scheme_accent }}>{props.version === 'VersionC' ? 'Apply Now' :  'Submit Application'}</button>
+					<p className="legalText">
+						By submitting this form, you are expressly consenting to receive communications from Trans-System, Inc. which may include phone calls including automated dialing technology, pre-recorded voice, SMS or MMS text messages, and/or emails regarding job opportunities, updates, promotions, reminders, and other related communications. You acknowledge that message and data rates may apply. You understand that your consent is not a condition of receiving services. You may revoke this consent at any time by calling us at (509) 623-4000 or emailing us at&nbsp;
+						<a href="mailto:privacyrequest@trans-system.com">privacyrequest@trans-system.com</a> to be placed on our do-not-contact list. You may opt out of receiving SMS messages anytime by replying “STOP” to any message. By submitting this form, you expressly agree to this&nbsp;
+						<a href="https://www.systemtrans.com/privacy-policy/" target="_blank" rel="noreferrer">Privacy Policy</a>.
+					</p>
 		   </form>
 		</div>
   );

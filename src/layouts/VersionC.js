@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './VersionC.css';
 import FormComponent from '../components/FormComponent';
@@ -158,7 +159,9 @@ function VersionC(props) {
 	    </div>
 	  </div>
 	  <div className="icon-section">
-	    <div className="grid-container">
+		{
+			!props.landingPageName.includes('owner-operator') &&
+			<div className="grid-container">
 	      <div>
 	        <h2>EXCELLENT BENEFITS</h2>
 	      </div>
@@ -229,6 +232,7 @@ function VersionC(props) {
 	        </div>
 	      </div>
 	    </div>
+		}
 	  </div>
 	  <div className="map-section" style={{backgroundColor: props.pageData.client.color_scheme_headline}}>
 	    <div className="grid-container">
