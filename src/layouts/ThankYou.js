@@ -128,6 +128,19 @@ const ThankYou = () => {
 			value: 1
 		},/* ['thankyouTracker']*/);
 	}
+
+	const clientNameMap = {
+		'SYSTEMTRANS.COM': 'System Transport',
+		'JJWILLIAMS.COM': 'James J. Williams',
+		'TWTRANS.COM': 'TW Transport',
+	};
+
+	const displayName = clientNameMap[landingPageData?.client?.name] || null;
+
+	const classACDL = location.state.cdl;
+	const withinRadiusArea = location.state.withinRadiusArea;
+	// console.log('classACDL', classACDL);
+	// console.log('withinRadiusArea', withinRadiusArea);
 	
 
   return (
@@ -151,36 +164,144 @@ const ThankYou = () => {
 			      <div className="header-wrap">
 			        <div className="checked-icon"></div>
 			        <div className="header-copy">
-			          <h1>Thanks {location.state.first_name}!</h1>
-			          <p>A recruiter will be contacting you soon.<br />
+						<h1>Thanks {location.state.first_name}!</h1>
+
+						{displayName === 'System Transport' && (
+							classACDL === '0' ? (
+								<div className='no-cdl-verbiage'>
+								<p>
+									We received your quick application, but it looks like you don’t have a Class A CDL license.<br />
+									All our drivers are required to have a valid Class A CDL to be eligible for employment.
+								</p>
+
+								<p>
+									If this was an error, contact your recruiter at:<br /> 
+									<span className='no-cdl-sub-heading'>{landingPageData?.landingPage?.phone}</span>
+								</p>
+
+								<p>
+									To obtain your Class A CDL, search online for “
+									<a rel="noreferrer" target="_blank" href="https://www.google.com/search?q=CDL+Driving+Schools+near+me">
+									CDL Driving Schools Near Me
+									</a>.”<br />
+									We will reimburse up to $5,000 of your driving school tuition to help you get your CDL and drive with us.*
+								</p>
+
+								<p>
+									<span className='no-cdl-sub-heading2'>BOOKMARK OUR JOBS FEED</span><br />
+									<a rel="noreferrer" target="_blank" href="https://cdljobs.systemtrans.com">https://cdljobs.systemtrans.com</a>
+								</p>
+
+								<p className='disclaimer'>
+									*CDL Schools’ inclusion in your search results do not constitute an endorsement by System Transport nor our parent company Trans-System, Inc. 
+									Tuition reimbursement is paid out over the course of your first year of employment with us. Contact your recruiter for more information.
+								</p>
+								</div>
+							) : !withinRadiusArea ? (
+								<div className='out-of-area-verbiage'>
+								  <p>
+								  	We received your quick application - unfortunately, we are not hiring in your area at this time.
+								  </p>
+
+								  <p>
+								  	But we’re growing and our needs are always changing. Check our jobs feed regularly for openings in the future.<br /> 
+									We’re excited for you to join the System Transport family!
+								  </p>
+
+								  <p>
+									<span className='out-of-area-sub-heading2'>BOOKMARK OUR JOBS FEED</span><br />
+									<a rel="noreferrer" target="_blank" href="https://cdljobs.systemtrans.com">https://cdljobs.systemtrans.com</a>
+								  </p>
+								</div>
+							) : (
+								<div>
+								<p>
+									A recruiter will be contacting you soon.<br />
 									In a hurry? Speed up the process by completing your full application online now!
 								</p>
-			          <a 
-					  	target="_blank" 
-						rel="noreferrer" 
-						href={"https://intelliapp.driverapponline.com/c/tsystem?r=" + landingPageData.landingPage.referral_code_intelliapp} 
-						id="applyNowBtn" 
-						className="form-control-btn btn"
-						onClick={handleApplyNowEvent}
-						style={{backgroundColor: landingPageData?.client.color_scheme_accent}}>COMPLETE THE FULL APPLICATION NOW!</a>
-			        </div>
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href={
+									"https://intelliapp.driverapponline.com/c/tsystem?r=" +
+									landingPageData.landingPage.referral_code_intelliapp
+									}
+									id="applyNowBtn"
+									className="form-control-btn btn"
+									onClick={handleApplyNowEvent}
+									style={{ backgroundColor: landingPageData?.client.color_scheme_accent }}
+								>
+									COMPLETE THE FULL APPLICATION NOW!
+								</a>
+								</div>
+							)
+						)}
+
+						{
+							displayName !== 'System Transport' && 
+							<div>
+								<p>
+									A recruiter will be contacting you soon.<br />
+									In a hurry? Speed up the process by completing your full application online now!
+								</p>
+								<a
+									target="_blank"
+									rel="noreferrer"
+									href={
+									"https://intelliapp.driverapponline.com/c/tsystem?r=" +
+									landingPageData.landingPage.referral_code_intelliapp
+									}
+									id="applyNowBtn"
+									className="form-control-btn btn"
+									onClick={handleApplyNowEvent}
+									style={{ backgroundColor: landingPageData?.client.color_scheme_accent }}
+								>
+									COMPLETE THE FULL APPLICATION NOW!
+								</a>
+								</div>
+						}
+
+						</div>
 			      </div>
 			    </div>
 			    <div className="middle-container no-background-color">
-			      <div className="middle-wrap">
-			        <h4>Call now to speak to a recruiter</h4>
-			        <div className="sub-heading-phone center">
-			            <h1 style={{color: landingPageData?.client.color_scheme_accent}}>{landingPageData?.landingPage?.phone}</h1>
-			        </div>
-			        <p>If you are not ready at this time, you will be receiving an email shortly <br />
-			          with the above information so you can apply at your convenience.</p>
-			      </div>
+				{displayName === 'System Transport' && (
+					classACDL === '1' &&
+					withinRadiusArea && (
+						<div className="middle-wrap">
+						<h4>Call now to speak to a recruiter</h4>
+						<div className="sub-heading-phone center">
+							<h1 style={{ color: landingPageData?.client.color_scheme_accent }}>
+							{landingPageData?.landingPage?.phone}
+							</h1>
+						</div>
+						<p>
+							If you are not ready at this time, you will be receiving an email shortly <br />
+							with the above information so you can apply at your convenience.
+						</p>
+						</div>
+					)
+				)}
+				{displayName !== 'System Transport' && (
+					<div className="middle-wrap">
+					<h4>Call now to speak to a recruiter</h4>
+					<div className="sub-heading-phone center">
+						<h1 style={{ color: landingPageData?.client.color_scheme_accent }}>
+						{landingPageData?.landingPage?.phone}
+						</h1>
+					</div>
+					<p>
+						If you are not ready at this time, you will be receiving an email shortly <br />
+						with the above information so you can apply at your convenience.
+					</p>
+					</div>
+				)}
 			    </div>
 			     <div className="middle-container">
 			      <div className="middle-wrap">
 			        <h2 className="heading">JOIN OUR COMMUNITY!</h2>
 			        <p>Join our fast-growing community on your favorite social networks for news, tips, photos and a place to share your experiences.
-			         Or check us out to see what it's like to be a part of the {landingPageData?.client.name} family!</p>
+			         Or check us out to see what it's like to be a part of the {displayName} family!</p>
 			         <div className="social">
 					 	{landingPageData.client.name === 'SYSTEMTRANS.COM' &&
 							<div> 

@@ -8,7 +8,7 @@ class LandingPagesDataService {
     return http.get(`/landing-page/${path}/${publisher}${token}`);
   }
   create(data) {
-    console.log('dd', data);
+    // console.log('dd', data);
     const token = `?api_token=${process.env.REACT_APP_TOKEN}`;
     return http.post(`/applicants${token}`, data);
   }

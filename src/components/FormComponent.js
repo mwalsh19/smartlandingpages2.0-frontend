@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import downArrow from '../images/down-arrow.png';
 import anniversaryIcon from '../images/50th-logo-icon.png';
@@ -27,30 +27,62 @@ const FormComponent = (props) => {
 		referral_code: props.referralCode,
 		customer: process.env.REACT_APP_CUSTOMER,
 		sms: 0,
+		withinRadiusArea: true,
+		status: "New",
 	});
 
 	const [ formData, setForm ] = React.useState(initialFormData)
 	const [ errors, setErrors ] = React.useState({})
 	const [ verified, setVerified ] = React.useState(false)
+	const [validZipCodes, setValidZipCodes] = React.useState([])
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		if (props.client === 'SYSTEMTRANS.COM') {
+			const fetchValidZipCodes = async () => {
+				try {
+				  const response = await fetch('https://systemtrans.com/landing-pages/zipcodes/zipcodes.json');
+				  const data = await response.json();
+				  // console.log('Zip Code Validation Response:', data);
+				  setValidZipCodes(data.zipCodes);
+				} catch (error) {
+				  console.error('Error fetching zip code validation:', error);
+				  setValidZipCodes([]);
+				}
+			};
+		  
+			fetchValidZipCodes();
+		}	
+
+	}, [props.client]);
+
 	const handleSubmit = (e) => {
 	    e.preventDefault()
-	    //console.log(formData);
+
+		// console.log('formData', formData);
 
 	    const newErrors = findFormErrors()
 
 	    if ( Object.keys(newErrors).length > 0 ) {
-
 	      setErrors(newErrors)
 	    } else {
-	      dispatch(createApplicantData(formData));
+			let updatedFormData = { ...formData };
+			if (props.client === 'SYSTEMTRANS.COM') {
+				if (updatedFormData.cdl === "0") {
+					updatedFormData.status = 'Not Qualified';
+				} else if (updatedFormData.withinRadiusArea === false) {
+					updatedFormData.status = 'Out of Area';
+				}
+			}
+			console.log('updatedFormData', updatedFormData);
+
+			dispatch(createApplicantData(updatedFormData));
 
 				if (props.isPreview) {
 					return navigate(
 						'thank-you?preview=true',
-					{ state: formData }
+					{ state: updatedFormData }
 				);
 				}
 				// SUBMIT EVENT
@@ -66,7 +98,7 @@ const FormComponent = (props) => {
 
 	      return navigate(
 		    	'thank-you',
-				{ state: formData }
+				{ state: updatedFormData }
 			);
 	    }
 	};
@@ -80,7 +112,55 @@ const FormComponent = (props) => {
 	      ...errors,
 	      [field]: null
 	    })
+
+		if (props.client === 'SYSTEMTRANS.COM') {
+			if (field === 'zip' && value.length === 5) {
+				// console.log('Zip Code Entered:', value);
+				// console.log('Valid Zips', validZipCodes);
+				(async () => {
+					try {
+						const zipcodesByRadius = await getZipCodesByRadius(value);
+						// console.log('zipcodesByRadius', zipcodesByRadius);
+						const withinRadius = checkValidZipInRadius(validZipCodes, zipcodesByRadius);
+						// console.log('withinRadius', withinRadius);
+						setForm(prev => ({
+							...prev,
+							withinRadiusArea: withinRadius
+						}));
+					} catch (error) {
+						console.error('Error getting zip codes by radius:', error);
+					}
+				})();
+			}
+		}
 	}
+
+	const getZipCodesByRadius = async (zipcode) => {
+		try {
+			const response = await fetch(`https://www.zipcodeapi.com/rest/js-5Fv3XW0tezF9MJrIH2MicJC1U47OoY5Pn3es7iRAPALZMAuVjyTjeWU6snPbr2T9/radius.json/${zipcode}/75/miles`);
+			const data = await response.json();
+			if (data.error_code) {
+				return [];
+			}
+			return data.zip_codes;
+		} catch (error) {
+			console.error('Error fetching zip code radius:', error);
+			return [];
+		}
+	};
+
+	const checkValidZipInRadius = (validZipCodes, zipcodesByRadius) => {
+		const foundValidZip = validZipCodes.some(validZip =>
+			zipcodesByRadius.some(zipObj => zipObj.zip_code === validZip)
+		);
+	
+		if (foundValidZip) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	
 
 	const findFormErrors = () => {
 	    const { 
