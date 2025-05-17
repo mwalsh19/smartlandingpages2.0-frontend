@@ -403,6 +403,8 @@ const FormComponent = (props) => {
 				    </Form.Control.Feedback>
 		      </div>
 		      <div className="form-group">
+			  	<p id="warning-info">A valid Class A CDL is required for this job.<br />
+				  We do not hire drivers without a Class A CDL.</p>
 		         <Form.Control as='select' onChange={ e => setField('cdl', e.target.value) }
 		         		isInvalid={ !!errors.cdl }>
 		            <option value=''>Do you have a valid Class A CDL?</option>

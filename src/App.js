@@ -25,6 +25,16 @@ function App() {
   const isLoading = false;
 
   useEffect(() => {
+    if (landingPageData?.template?.name === 'VersionA') {
+      const currentUrl = window.location.href;
+      const newUrl = currentUrl.replace('VersionA', 'VersionC');
+      if (currentUrl !== newUrl) {
+        window.location.replace(newUrl);
+      }
+    }
+  }, [landingPageData]);
+
+  useEffect(() => {
     dispatch(retrieveLandingPage(path, publisher, version));
     if (!preview) {
       // <!-- hiremaster conversion init script -->

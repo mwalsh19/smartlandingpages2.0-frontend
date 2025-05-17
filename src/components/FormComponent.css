@@ -151,6 +151,12 @@
 	margin-top: -15px;
 }
 
+.form-group #warning-info {
+	color: #ff0000;
+	text-align: left;
+	padding: 5px 5px 0px 5px;
+}
+
 @media(max-width: 850px) {
 
 	.leadForm {
