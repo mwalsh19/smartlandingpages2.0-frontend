@@ -598,9 +598,9 @@
 	}
 
 	.landscape-container {
-	    min-height: 1300px;
-			background-position: 0px 700px !important;
-    background-size: contain !important;
+	    min-height: 1480px;
+		background-position: 0px 700px !important;
+    	background-size: contain !important;
 	}
 
 	.col {
@@ -682,7 +682,8 @@
 
 @media(max-width: 550px) {
 	.versionC .landscape-container {
-    min-height: 1075px;
+		background-size: cover !important;
+		min-height: 1390px;
 	}
 	.middle-container {
 		padding-top: 3em;
