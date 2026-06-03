@@ -192,10 +192,11 @@ function App() {
               height: '50px',
               borderRadius: '.25rem .25rem 0 0',
               bottom: 0,
-              right: 40,
+              right: 110,
               fontSize: '20px',
               fontFamily: 'helvetica',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              zIndex: 100000000,
             }
           }
           component={

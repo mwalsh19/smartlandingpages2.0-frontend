@@ -95,7 +95,44 @@
 	padding-top: 170px;
 }
 
-.route-options-text h2 {
+.versionC .chatbot-convo-callout {
+  margin-top: 1em;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  background-color: #ffffff;
+  color: #000000;
+  min-width: 96%;
+  min-height: 100px;
+
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-left: 1px solid #fecb00;
+  border-right: 1px solid #fecb00;
+  border-bottom: 1px solid #fecb00;
+  border-top: 30px solid #fecb00;
+
+  padding: 16px;
+}
+
+.versionC .chatbot-convo-callout img {
+  width: 154px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.versionC .chatbot-callout-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.versionC .chatbot-convo-callout .chatbot-callout-header {
+  font-size: 16px;
+}
+
+.versionC .chatbot-convo-callout .chatbot-callout-body {
+  font-size: 14px;
 }
 
 .route-options-text h2:before {
@@ -188,10 +225,6 @@
 .versionC .middle-container p {
 	color: #252525;
 	font-size: 18px;
-}
-
-.versionC .sub-heading-wrap .logo { 
-    /*padding-top: 17px; */
 }
 
 .versionC .sub-heading-wrap .padding-17 { 
@@ -603,6 +636,17 @@
     	background-size: contain !important;
 	}
 
+	.landscape-container:has(.chatbot-convo-callout) {
+	    min-height: 1675px;
+		background-position: 0px 700px !important;
+    	background-size: contain !important;
+	}
+
+	.versionC .chatbot-convo-callout img {
+		width: 100px;
+	}
+
+
 	.col {
 		padding-right: 0;
     	padding-left: 0;
@@ -685,13 +729,34 @@
 		background-size: cover !important;
 		min-height: 1390px;
 	}
+
+	.versionC .landscape-container:has(.chatbot-convo-callout) {
+		min-height: 1640px;
+	}
+
 	.middle-container {
 		padding-top: 3em;
 	}
+
+	.versionC .chatbot-convo-callout {
+		margin-top: 1.5em;
+		min-width: 88%;
+	}
+
 }
 
 @media(max-width: 415px) {
 	.middle-container {
 		padding-top: 6em;
 	}
+
+	.versionC .landscape-container:has(.chatbot-convo-callout) {
+		min-height: 1688px;
+	}
+
+	.versionC .chatbot-convo-callout img {
+		width: 80px;
+	}
+
+
 }

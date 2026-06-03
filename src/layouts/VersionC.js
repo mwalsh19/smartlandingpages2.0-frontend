@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, {useEffect} from 'react';
 import './VersionC.css';
 import FormComponent from '../components/FormComponent';
+import aiCalloutImage from "../images/AI-callout-image.png";
 
 const toTopScroll = () => {
 	window.scrollTo(0,0);
@@ -64,6 +65,33 @@ function VersionC(props) {
 			image: landingPageData.extra_section_6_image,
 		});
 	}
+
+	  useEffect(() => {
+		// Only load chatbot for System Transport landing pages
+		if (props.pageData.client.name !== "SYSTEMTRANS.COM") {
+			return;
+		}
+
+		const script = document.createElement("script");
+
+		script.src = "https://widgets.leadconnectorhq.com/loader.js";
+
+		script.setAttribute(
+		"data-resources-url",
+		"https://widgets.leadconnectorhq.com/chat-widget/loader.js",
+		);
+
+		script.setAttribute("data-widget-id", "6941bfbfcd151761ab49648d");
+
+		script.async = true;
+
+		document.body.appendChild(script);
+
+		return () => {
+		document.body.removeChild(script);
+		};
+	}, [props.pageData.client.name]);
+
 	
   return (
 	<div className="versionC">
@@ -108,7 +136,26 @@ function VersionC(props) {
 										<div className="main-video-holder padding-video-mobile">
 		                	<iframe src={props.pageData.landingPage.primary_video_link} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 										</div>
-									</div>
+							                      {props.pageData.client.name === "SYSTEMTRANS.COM" && (
+                        <div className="chatbot-convo-callout">
+                          <img src={aiCalloutImage} alt="ai callout" />
+                          <div className="chatbot-callout-text">
+                            <p className="chatbot-callout-header">
+                              <strong>Got questions but short on time?</strong>{" "}
+                              We've got you covered.
+                            </p>
+                            <p className="chatbot-callout-body">
+                              Connect instantly with our online recruiters–ready
+                              to give you fast, clear answers right here on this
+                              page. Just click the yellow icon in the
+                              lower-right corner of your screen to start the
+                              conversation.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+					  </div>
 		            </div>
 		          </div>
 	        </div>
