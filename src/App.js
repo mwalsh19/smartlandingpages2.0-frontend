@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 //import ReactGA from 'react-ga';
 import ReactGA from "react-ga4";
 import ScrollToTop from "react-scroll-to-top";
+import ReactPixel from 'react-facebook-pixel';
 
 function App() {
 
@@ -128,6 +129,14 @@ function App() {
       }
     }
   }, [landingPageData]);
+
+  useEffect(() => {
+    const pixelId = landingPageData?.publisher?.pixel;
+    if (landingPageData?.landingPage && !preview && pixelId) {
+      ReactPixel.init(pixelId);
+      ReactPixel.pageView();
+    }
+  }, [landingPageData?.landingPage, landingPageData?.publisher?.pixel, preview]);
 
   if (publisher && publisher !== landingPageData?.publisher?.publisher) {
     navigate('/404');

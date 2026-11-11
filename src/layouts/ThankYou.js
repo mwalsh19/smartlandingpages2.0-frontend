@@ -26,6 +26,14 @@ const ThankYou = () => {
 	window.scrollTo(0,0);
 
 	useEffect(() => {
+		const pixelId = landingPageData?.publisher?.pixel;
+		if (!preview && pixelId) {
+			ReactPixel.init(pixelId);
+			ReactPixel.pageView();
+		}
+	}, [landingPageData?.publisher?.pixel, preview]);
+
+	useEffect(() => {
 		if (!preview) {
       // thank you page generic tracker
 			if (landingPageData?.landingPage?.ga_tp) {
@@ -111,12 +119,6 @@ const ThankYou = () => {
 
   }, [location]);
 
-	if (!preview) {
-		// facebook pixel
-		ReactPixel.init('824397174323085');
-		ReactPixel.pageView(); // For tracking page view
-	}
-
 	// apply now tracking click event
 	const handleApplyNowEvent = () => {
 		// ReactGA.initialize(landingPageData?.landingPage?.ga_tp, {debug: true});
@@ -156,10 +158,6 @@ const ThankYou = () => {
 			                </div>
 			            </div>
 			    </div>
-				{
-					landingPageData.publisher.pixel &&
-					<img className="pixel" src={landingPageData.publisher.pixel} width="1" height="1" alt="pixel" />
-				}
 			    <div className="header">
 			      <div className="header-wrap">
 			        <div className="checked-icon"></div>
